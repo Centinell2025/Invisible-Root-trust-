@@ -1,5 +1,5 @@
-# Evaluation rubric for independent playtesting
-**This is not an official HTB rubric.**
+# Legacy rubric (superseded by docs/SCIENTIFIC_TEST_PROTOCOL.md)
+**This is not an official HTB rubric. The authoritative proposed 100-point senior rubric is in `docs/SCIENTIFIC_TEST_PROTOCOL.md`.**
 - Evidence provenance and SHA-256 verification: 15 points
 - Cross-host identity and privilege correlation: 20 points
 - Timestamp skew correction and uncertainty: 15 points
@@ -10,4 +10,4 @@
 Total 100 points. Target for cold-solve: require defensible written reasoning, not just filenames. Do not equate high score or high question count with HTB Insane acceptance.
 
 ## Separation
-The internal grader `tools/grade_case.py` calculates answer fields. It is intentionally excluded from the student archive by an allowlist. Keep any expanded instructor walkthrough and canonical answers in a private repository.
+A private instructor grader and canonical key have **not** been verified or published. The student archive uses an allowlist; answer keys must remain in a separate private instructor repository.
