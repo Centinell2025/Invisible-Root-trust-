@@ -21,5 +21,6 @@ files = sorted(p for p in out.iterdir() if p.is_file() and p.name != "custody_ma
 )
 subprocess.run([sys.executable, str(root/"tools/validate_case.py")], check=True)
 subprocess.run([sys.executable, str(root/"tools/validate_realistic.py")], check=True)
+subprocess.run([sys.executable, str(root/"tools/validate_snapshot.py")], check=True)
 subprocess.run([sys.executable, str(root/"tools/scientific_quality_gate.py")], check=True)
 print("Full synthetic research case generated and validated.")
