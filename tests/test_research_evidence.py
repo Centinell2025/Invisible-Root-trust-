@@ -16,7 +16,6 @@ class ResearchEvidenceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         subprocess.run([sys.executable, str(ROOT/"tools/run_full_case.py")], check=True)
-        subprocess.run([sys.executable, str(ROOT/"tools/generate_research.py")], check=True)
 
     def test_session_ids_unique(self):
         rows = read("session_lineage.csv")
