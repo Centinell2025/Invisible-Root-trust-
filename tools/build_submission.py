@@ -12,14 +12,9 @@ subprocess.run([sys.executable, str(root / "tools" / "validate_case.py")], check
 subprocess.run([sys.executable, str(root / "tools" / "scientific_quality_gate.py")], check=True)
 destination.mkdir(exist_ok=True)
 documents = (
-    "questions/CASE_BRIEFING.md",
+    "docs/STUDENT_INCIDENT_BRIEF.md",
+    "docs/STUDENT_EVIDENCE_RULES.md",
     "questions/INVESTIGATION.md",
-    "questions/ADVANCED_PIVOTS.md",
-    "questions/SENIOR_RESEARCH_CHALLENGES.md",
-    "questions/ROOT_OF_TRUST_DECISION.md",
-    "docs/INCIDENT_NARRATIVE.md",
-    "docs/SCIENTIFIC_INVESTIGATION_PROTOCOL.md",
-    "docs/FORENSIC_LIMITATIONS.md",
 )
 entries = sorted(p for p in evidence.iterdir() if p.is_file())
 if not entries or not (evidence / "custody_manifest.sha256").exists():
