@@ -10,6 +10,7 @@ import hashlib
 import ipaddress
 import json
 import re
+import re
 import struct
 import sys
 from datetime import datetime, timezone
@@ -85,6 +86,23 @@ def packets_from_pcap(raw):
                            payload=data[hdrlen:]))
     require(i == len(raw), "Extra PCAP bytes")
     return result
+
+def validate_audit_order(lines):
+    """Check monotonic Linux audit serial/time progression, including the intentional gap."""
+    records = []
+    pattern = re.compile(r"^type=SYSCALL msg=audit\((\d+(?:\.\d+)?):(\d+)\):")
+    for line in lines:
+        m = pattern.search(line)
+        if m:
+            records.append((float(m.group(1)), int(m.group(2))))
+    require(len(records) >= 38, "Audit export has too few syscall records")
+    require(all(a[0] <= b[0] and a[1] < b[1]
+                for a, b in zip(records, records[1:])),
+            "Audit timestamp/serial inversion: impossible Linux sequence ordering")
+    seq = {record[1] for record in records}
+    require({8101, 8104, 8105}.issubset(seq) and not ({8102,8103} & seq),
+            "Required audit source gaps not preserved")
+    return records
 
 def verify():
     att = table("secure_boot_attestation.csv")
@@ -164,6 +182,7 @@ def verify():
 
     syslog = (OUT / "auth_syslog.log").read_text(encoding="utf-8").splitlines()
     audit = (OUT / "auditd_extract.log").read_text(encoding="utf-8").splitlines()
+    validate_audit_order(audit)
     journal = [json.loads(x) for x in (OUT / "journal_extended.jsonl").read_text(encoding="utf-8").splitlines()]
     require(len(syslog) >= 75 and len(audit) >= 35 and len(journal) >= 60,
             "Insufficient benign background noise")
