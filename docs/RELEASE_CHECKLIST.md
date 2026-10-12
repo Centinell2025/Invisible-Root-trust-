@@ -3,11 +3,11 @@
 - [x] Deterministic evidence generator
 - [x] Student investigation worksheet
 - [x] SHA-256 manifest generator
-- [x] Evidence integrity and consistency validator (code committed; CI execution not yet confirmed)
-- [x] Student ZIP packaging script (code committed; execution not yet confirmed)
-- [x] CI workflow definition (run status not yet confirmed)
-- [ ] Realistic synthetic binary artifacts (memory, UEFI variables, PCAP) and forensic parsers
-- [ ] Nontrivial decoys and time-offset reconciliation
+- [x] Evidence integrity and consistency validator (CI passed with 81 tests on 2026-10-12)
+- [x] Student ZIP packaging script (CI builds and validates its contents)
+- [x] CI workflow definition (verified successful; artifact published from successful push run)
+- [ ] Trusted firmware/TPM, memory or full disk acquisitions (current files are realistic **simulations**; TCP partial capture and TAR file triage are validated)
+- [x] Limited benign background noise, SQLite event cache and time-offset reconciliation logic (error bounds still unavailable)
 - [ ] 30 unambiguous machine-graded prompts with verified answer values
 - [ ] Private instructor walkthrough and evidence-to-answer mapping
 - [ ] Independent cold-solve playtest with difficulty measurement
