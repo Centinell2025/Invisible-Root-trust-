@@ -265,7 +265,7 @@ write_csv("sensor_capture_scope.csv",
           ["utc", "sensor", "capture", "method", "start_utc", "end_utc",
            "packet_count", "selection", "coverage_note"],
           [dict(utc="2026-09-17T03:17:12Z", sensor="nrg-sensor-04",
-                capture="edge_sensor_capture.pcap", method="synthetic-pcap-ng-independent-of-local-agent",
+                capture="edge_sensor_capture.pcap", method="simulated-off-host-pcap",
                 start_utc="2026-09-17T03:17:07Z", end_utc="2026-09-17T03:17:11Z",
                 packet_count=str(len(packets)), selection="short-window-synthetic-sample",
                 coverage_note="partial capture; not representative of flow byte counters")])
