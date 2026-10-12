@@ -20,6 +20,7 @@ HEX = re.compile(r"^[a-f0-9]{64}$")
 def verify():
     subprocess.run([sys.executable, str(ROOT / "tools" / "validate_case.py")], check=True)
     subprocess.run([sys.executable, str(ROOT / "tools" / "validate_realistic.py")], check=True)
+    subprocess.run([sys.executable, str(ROOT / "tools" / "validate_snapshot.py")], check=True)
     subprocess.run([sys.executable, str(ROOT / "tools" / "scientific_quality_gate.py")], check=True)
     if not ZIP.is_file():
         raise ValueError("Student archive missing")
