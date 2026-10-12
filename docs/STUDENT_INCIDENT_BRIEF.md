@@ -18,3 +18,10 @@ You may inspect the provided evidence, compute hashes, cross-reference events an
 Follow `questions/INVESTIGATION.md` in numerical order. Support each conclusion with exact artifacts and explain contradictions and uncertainty. Your final submission should include a reconstructed timeline, a competing-hypothesis analysis, and an executive go/no-go/conditional-go recommendation with concrete validation gates.
 
 **Scope:** All systems, people, addresses and actions are fabricated training examples. Centinell Suite Defense is credited as author, not described as the victim of a real incident.
+
+---
+
+> **SELLO DE AUTORÍA | BEACON OF THE EAGLE LLC**  
+> **Centinell Suite Defense — Digital Forensics & Incident Response Research**  
+> © 2026 Beacon of the Eagle LLC. Original educational laboratory. All incident evidence and entities are simulated.  
+> *Corporate attribution only; this mark does not imply external certification or that Beacon was an incident victim.*
