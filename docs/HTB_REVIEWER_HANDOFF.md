@@ -12,7 +12,7 @@ The verified **student-only ZIP** is published after successful GitHub Actions v
 - `README.txt` — mandatory safety notice, free-tool instructions, evidence-validation commands and Beacon authorship.
 - `docs/STUDENT_INCIDENT_BRIEF.md` — spoiler-free fictional incident and tasking.
 - `docs/STUDENT_EVIDENCE_RULES.md` — measurement, attribution, uncertainty and chain-of-custody standards.
-- `questions/HTB_PLAYER_TASKS.md` — **16 exact-value, progressively staged** player tasks with unambiguous output formats.
+- `questions/HTB_PLAYER_TASKS.md` — **17 exact-value, progressively staged** player tasks with unambiguous output formats.
 - `questions/INVESTIGATION.md` — **30 analytical research questions**, a separate instructor-assessed extension rather than 30 automatically scored flags.
 - `artifacts/` — all 35 evidence files plus `custody_manifest.sha256`, including SQLite, packet captures, hash-linked specimen bytes, Linux-style logs and a scoped TAR.
 
@@ -69,7 +69,7 @@ CI also checks syntax, rebuilds evidence after mutation tests, hashes every arti
 | Criterion | Minimum proof expected | Current status |
 |---|---|---|
 | User can start without the repository | README, included tasks, evidence, safe free-tool examples | Built into student ZIP |
-| Answers reproducible from artifact bytes | Independent solution of each of the 16 exact tasks | **Private instructor verification needed** |
+| Answers reproducible from artifact bytes | Independent solution of each of the 17 exact tasks | **Private instructor verification needed** |
 | Grading compatible with official HTB question YAML | Exact `flag` values, formatting and acceptable variants | **Instructor-only YAML needed** |
 | Full intended walkthrough | Step-by-step answer path following HTB Sherlock writeup template | **Separate confidential attachment required** |
 | Screenshot proof of each answer | Actual terminal/Wireshark/SQLite screenshot illustrating evidence | **Examiner evidence pack required** |
@@ -78,7 +78,7 @@ CI also checks syntax, rebuilds evidence after mutation tests, hashes every arti
 | Realism and playability | Two blind attempts and ambiguity reconciliation | **Not independently validated** |
 | Insane difficulty | Expert multi-stage investigation and observed time-to-solve | **Not independently established** |
 
-The 30-question research worksheet is intentionally harder to grade automatically; HTB's platform should receive the 16 discrete task fields and a **separately confidential** human-reviewed incident conclusion. Editors may choose to revise the number and difficulty after cold-solve results.
+The 30-question research worksheet is intentionally harder to grade automatically; HTB's platform should receive the 17 discrete task fields and a **separately confidential** human-reviewed incident conclusion. Editors may choose to revise the number and difficulty after cold-solve results.
 
 ## 7. Reviewer feedback requested
 
