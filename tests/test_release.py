@@ -7,14 +7,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCUMENTS = {
-    "questions/CASE_BRIEFING.md",
+    "docs/STUDENT_INCIDENT_BRIEF.md",
+    "docs/STUDENT_EVIDENCE_RULES.md",
     "questions/INVESTIGATION.md",
-    "questions/ADVANCED_PIVOTS.md",
-    "questions/SENIOR_RESEARCH_CHALLENGES.md",
-    "questions/ROOT_OF_TRUST_DECISION.md",
-    "docs/INCIDENT_NARRATIVE.md",
-    "docs/SCIENTIFIC_INVESTIGATION_PROTOCOL.md",
-    "docs/FORENSIC_LIMITATIONS.md",
 }
 
 class ReleaseTests(unittest.TestCase):
