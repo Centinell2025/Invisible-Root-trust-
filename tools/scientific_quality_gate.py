@@ -3,7 +3,7 @@
 
 This tests question-source coverage, cross-source consistency, uncertainty,
 and release structure. It does NOT automatically grade narrative answers or
-certify the exercise as HTB Insane.
+certify the exercise as HTB Hard.
 """
 import argparse
 import csv
@@ -238,22 +238,22 @@ def check_evidence():
 def run(mode="engineering"):
     check_question_contracts(WORKSHEET.read_text(encoding="utf-8"))
     stats = check_evidence()
-    if mode == "insane":
+    if mode == "hard":
         # This must not be allowed to pass purely on self-produced source-code tests.
         blockers = [
-            "Private instructor answer key and exact machine-grading contracts not independently verified",
-            "No recorded independent cold solve by a non-author investigator",
-            "No independently acquired firmware/boot-chain or realistic full-disk/RAM forensic specimen",
-            "One-packet UDP PCAP cannot validate the reported TCP conversation",
+            "Confidential answer key and walkthrough have not yet passed independent third-party grading verification",
+            "No recorded blind cold-solve by an independent non-author analyst",
+            "Hardware-root compromise remains unproven; evidence limitations must remain visible",
+            "The partial sensor capture cannot establish a complete TCP session or data exfiltration",
         ]
-        raise ValueError("INSANE RELEASE BLOCKED: " + "; ".join(blockers))
+        raise ValueError("HARD READINESS NOT YET VERIFIED: " + "; ".join(blockers))
     print("PASS: scientific engineering gate; 30/30 question-source contracts; " + json.dumps(stats, sort_keys=True))
-    print("REVIEW REQUIRED: interpreting answers, answer uniqueness, cold solve, and Insane readiness are NOT certified")
+    print("REVIEW REQUIRED: interpreting answers, answer uniqueness, cold solve, and Hard readiness are NOT certified")
     return stats
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
-    p.add_argument("--mode", choices=["engineering", "insane"], default="engineering")
+    p.add_argument("--mode", choices=["engineering", "hard"], default="engineering")
     args = p.parse_args()
     try:
         run(args.mode)
