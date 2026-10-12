@@ -3,7 +3,7 @@
 - [x] Deterministic evidence generator
 - [x] Student investigation worksheet
 - [x] SHA-256 manifest generator
-- [x] Evidence integrity and consistency validator (CI passed with 84 tests on 2026-10-12)
+- [x] Evidence integrity and consistency validator (CI passed with 85 tests on 2026-10-12)
 - [x] Student ZIP packaging script (CI builds and validates its contents)
 - [x] CI workflow definition (verified successful; artifact published from successful push run)
 - [ ] Trusted firmware/TPM, memory or full disk acquisitions (current files are realistic **simulations**; TCP partial capture and TAR file triage are validated)
