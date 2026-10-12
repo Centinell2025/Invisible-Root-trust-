@@ -14,6 +14,7 @@ documents = (
     "questions/CASE_BRIEFING.md",
     "questions/INVESTIGATION.md",
     "questions/ADVANCED_PIVOTS.md",
+    "questions/SENIOR_RESEARCH_CHALLENGES.md",
     "docs/INCIDENT_NARRATIVE.md",
     "docs/SCIENTIFIC_INVESTIGATION_PROTOCOL.md",
     "docs/FORENSIC_LIMITATIONS.md",
