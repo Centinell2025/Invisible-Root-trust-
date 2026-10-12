@@ -2,14 +2,15 @@
 **Hack The Box Sherlock candidate | Advanced defensive DFIR | Target difficulty: Insane**
 
 ## Briefing
-At 03:18 UTC, fictional Northstar Research Group received an attestation discrepancy for Linux gateway `nrg-gw-07`. Investigate the relationship between identity activity, maintenance authorization, local audit records, binary policy specimens, clock skew and conflicting network observations.
+At 03:18 UTC, a fully fictional enterprise-lab environment received a *local software* policy discrepancy for Linux gateway `nrg-gw-07`. Investigate the relationship between identity activity, maintenance authorization, local audit records, binary policy specimens, clock skew and conflicting network observations.
 
-All entities, evidence and indicators are synthetic. The specimens do not demonstrate a real UEFI bootkit or memory compromise.
+Prepared by Centinell Suite Defense. All events, people, hosts and indicators are synthetic: no actual organization is named as a victim. The new realistic evidence includes syslog/auditd-style exports, FIM, processes, unit inventory and a partial valid TCP/UDP sensor PCAP. These specimens do not demonstrate a real UEFI bootkit, verified TPM quote, memory compromise or data exfiltration.
 
 ## Build and verify
 Requires Python 3.10+ (standard library only):
 ```bash
 python3 tools/run_full_case.py
+python3 tools/validate_realistic.py
 python3 -m unittest discover -s tests -v
 python3 tools/build_submission.py
 ```
@@ -26,6 +27,7 @@ Only these three documents and the generated forensic artifacts go into the stud
 ```bash
 python3 tools/run_full_case.py
 python3 tools/scientific_quality_gate.py
+python3 tools/validate_realistic.py
 python3 -m unittest discover -s tests -v
 python3 tools/build_submission.py
 python3 tools/validate_release.py
