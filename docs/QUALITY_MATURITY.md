@@ -8,8 +8,8 @@
 
 ## Known open blockers
 1. The public Git history previously contained answer derivation logic. Deleting a file does not erase commit history.
-2. The memory excerpt is not a real forensic RAM image, and the policy specimens are mock bytes.
-3. The single-packet UDP PCAP cannot confirm the separate TCP flow metadata.
+2. The memory excerpt is not a forensic RAM acquisition, and the policy specimens are synthetic configuration bytes, with **software** digest measurements only (no hardware-root attestation).
+3. The original UDP-only PCAP cannot validate the TCP flow. The new checksum-valid partial TCP/UDP capture corroborates a short connection but cannot establish full flow bytes or exfiltration.
 4. A private instructor key, precise grading contract, and independent cold solve are still missing.
 5. CI must pass before release; no assertion of passing CI should be made without seeing the run.
 
