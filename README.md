@@ -42,3 +42,10 @@ The `--mode insane` scientific gate deliberately blocks a release claim until pr
 This public repository contains development code. It is **not a confidential challenge distribution**: Git history may reveal removed files, and generator scripts inherently disclose clues. Distribute only the reviewed student ZIP to learners, and host instructor solutions in a separate private repository. Do not submit before independent playtesting, answer uniqueness review, and evidence quality verification.
 
 Copyright (c) 2026 Centinell Suite Defense. Educational use only.
+
+---
+
+> **SELLO DE AUTORÍA | BEACON OF THE EAGLE LLC**  
+> **Centinell Suite Defense — Digital Forensics & Incident Response Research**  
+> © 2026 Beacon of the Eagle LLC. Original educational laboratory. All incident evidence and entities are simulated.  
+> *Corporate attribution only; this mark does not imply external certification or that Beacon was an incident victim.*
