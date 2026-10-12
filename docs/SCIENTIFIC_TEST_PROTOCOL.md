@@ -17,6 +17,8 @@ Run locally from the repository root:
 
 ```bash
 python3 tools/run_full_case.py
+python3 tools/validate_realistic.py
+python3 tools/validate_snapshot.py
 python3 -m unittest discover -s tests -v
 python3 tools/build_submission.py
 python3 tools/validate_release.py
@@ -35,6 +37,8 @@ The automated tests must verify:
 - Explicit source-clock uncertainty; timestamps without a justified calibration cannot silently be normalized.
 - Syntactically valid Ethernet/IPv4 packet capture with the **correct 2026 incident date**.
 - Separate the legacy UDP-only packet from the partial **TCP handshake, sample payload and UDP lookalike** in the additional edge-sensor PCAP. Validate actual on-wire checksums, endpoints and capture completeness. No source alone proves exfiltration.
+- A derived SQLite five-host event cache with at least 1,250 records, flow entries and consistent forensic SQL joins; it is **not** independently collected evidence.
+- A scoped offline Linux TAR acquisition containing selected logs, file specimens and a `systemd` symlink; tests must reject tampered TAR file bytes or inconsistent database event ancestry.
 - A student's ZIP that contains the investigative brief and artifacts but excludes development and instructor-only material.
 - **Negative controls:** malformed or truncated PCAP, invalid IPv4/TCP/UDP checksums, tampered policy hash derivation, false TPM-attestation claim, broken process lineage, altered change approval, missing phase and duplicate question number must be rejected.
 
@@ -91,7 +95,7 @@ The following remain **open**:
 - No independent, documented cold-solve result has been collected.
 - No privately verified grading key covering 30 final answers exists in the repository.
 - The policy specimens are mock data; no trustworthy firmware acquisition or hardware attestation is distributed.
-- The memory excerpt is not a forensic RAM image.
+- The memory excerpt is not a forensic RAM image; the new offline TAR is a file-level triage, **not** a sector-by-sector disk image. The SQLite cache is also derived, and neither artifact authenticates a real host.
 - The legacy single UDP packet does not corroborate TCP; the new eight-packet edge-sensor sample supports only a limited TCP connection and not the full byte count, authentic TLS, payload purpose or exfiltration.
 
 **Release policy:** Passing the engineering gate permits continued development and reproducible distribution for testing. It does **not** authorize calling the lab Insane or promising HTB acceptance.
