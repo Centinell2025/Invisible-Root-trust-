@@ -23,7 +23,7 @@ The generated package now includes a five-host SQLite correlation cache (`endpoi
 ## Student materials (reviewed ZIP allowlist)
 - [Student incident briefing](docs/STUDENT_INCIDENT_BRIEF.md)
 - [Evidence handling rules](docs/STUDENT_EVIDENCE_RULES.md)
-- [16 precise platform task milestones](questions/HTB_PLAYER_TASKS.md)
+- [17 precise platform task milestones](questions/HTB_PLAYER_TASKS.md)
 - [30-question advanced investigation worksheet](questions/INVESTIGATION.md)
 
 The required `README.txt`, these four student documents and the generated forensic artifacts go into the student ZIP. Other documents in this public development repository include instructor-style commentary, advanced pivots, scientific testing criteria or explicit evidence limitations that may reveal investigative findings. **Do not supply the entire public GitHub repository or its history as the student challenge.**
