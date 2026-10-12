@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Add deterministic, safe synthetic binary and multi-host evidence."""
 from pathlib import Path
-import hashlib,struct,csv,json\nfrom datetime import datetime, timezone
+import hashlib,struct,csv,json
+from datetime import datetime, timezone
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/"artifacts";OUT.mkdir(exist_ok=True)
 def write_csv(name,fields,rows):
  with (OUT/name).open("w",newline="",encoding="utf8") as f:
