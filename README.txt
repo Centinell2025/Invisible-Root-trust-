@@ -20,7 +20,7 @@ PACKAGE CONTENTS
 ================
 - docs/STUDENT_INCIDENT_BRIEF.md : your assignment and scenario
 - docs/STUDENT_EVIDENCE_RULES.md : what qualifies as a defensible conclusion
-- questions/HTB_PLAYER_TASKS.md : 16 objective, single-answer HTB task milestones
+- questions/HTB_PLAYER_TASKS.md : 17 objective, single-answer HTB task milestones
 - questions/INVESTIGATION.md : 30-question instructor-reviewed research extension
 - artifacts/ : simulated forensic evidence, including:
     custody_manifest.sha256         -- SHA-256 inventory
@@ -60,7 +60,7 @@ SAFE FIRST STEPS — KALI/UBUNTU
    If those tools are unavailable, Wireshark's File > Open also works.
 7. Compare the policy specimens using local SHA-256 utilities:
        sha256sum artifacts/policy_baseline.bin artifacts/policy_observed.bin
-8. Continue through the 16 HTB tasks in order. For each answer, cite the source filename,
+8. Continue through the 17 HTB tasks in order. For each answer, cite the source filename,
    specific record/row/offset and original UTC timestamp if present.
 
 SAFETY AND PROVENANCE
@@ -68,7 +68,7 @@ SAFETY AND PROVENANCE
 The SQLite database is a derived analysis cache, NOT independent proof that
 its underlying records are authentic. The TAR is a selective *file-level*
 triage, NOT a full-disk forensic image. Packet captures are partial.
-A local software hash discrepancy is NOT a validated TPM quote or proof
+TAR member timestamps are normalized to the Unix epoch (1970) for reproducible packaging and are NOT original file modification times. Do not infer chronology from those archive metadata fields.\nA local software hash discrepancy is NOT a validated TPM quote or proof
 that the platform firmware root of trust has been compromised.
 
 DO NOT automatically apply clock corrections to sources that lack an
@@ -80,7 +80,7 @@ that would resolve the issue.
 WHAT TO DELIVER
 ===============
 - SHA-256/inventory verification notes
-- Exact-value answers to the 16 HTB tasks (on the platform, if supplied)
+- Exact-value answers to the 17 HTB tasks (on the platform, if supplied)
 - Artifact-cited responses to the optional 30-question research extension
 - Multihost event timeline, including uncertainty
 - Observed/inferred/unknown claim matrix and competing hypotheses
