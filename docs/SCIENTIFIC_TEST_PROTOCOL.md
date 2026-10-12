@@ -22,7 +22,7 @@ python3 tools/validate_snapshot.py
 python3 -m unittest discover -s tests -v
 python3 tools/build_submission.py
 python3 tools/validate_release.py
-python3 tools/scientific_quality_gate.py --mode insane
+python3 tools/scientific_quality_gate.py --mode hard
 ```
 
 The last command is **expected to block** release until external evidence, instructor grading contracts and independent cold-solve requirements are satisfied; an ordinary nonzero exit status is not a defect in this protective gate.
@@ -98,4 +98,4 @@ The following remain **open**:
 - The memory excerpt is not a forensic RAM image; the new offline TAR is a file-level triage, **not** a sector-by-sector disk image. The SQLite cache is also derived, and neither artifact authenticates a real host.
 - The legacy single UDP packet does not corroborate TCP; the new eight-packet edge-sensor sample supports only a limited TCP connection and not the full byte count, authentic TLS, payload purpose or exfiltration.
 
-**Release policy:** Passing the engineering gate permits continued development and reproducible distribution for testing. It does **not** authorize calling the lab Insane or promising HTB acceptance.
+**Release policy:** Passing the engineering gate permits continued development and reproducible distribution for testing. It does **not** certify Hard difficulty or promise HTB acceptance.
