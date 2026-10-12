@@ -7,11 +7,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCUMENTS = {
+    "README.txt",
     "docs/STUDENT_INCIDENT_BRIEF.md",
     "docs/STUDENT_EVIDENCE_RULES.md",
+    "questions/HTB_PLAYER_TASKS.md",
     "questions/INVESTIGATION.md",
 }
-
 class ReleaseTests(unittest.TestCase):
     def test_student_archive_contains_only_allowlisted_paths(self):
         subprocess.run([sys.executable, str(ROOT/"tools/run_full_case.py")], check=True)
