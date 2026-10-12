@@ -24,6 +24,7 @@ def verify():
     subprocess.run([sys.executable, str(ROOT / "tools" / "validate_realistic.py")], check=True)
     subprocess.run([sys.executable, str(ROOT / "tools" / "validate_snapshot.py")], check=True)
     subprocess.run([sys.executable, str(ROOT / "tools" / "scientific_quality_gate.py")], check=True)
+    subprocess.run([sys.executable, str(ROOT / "tools" / "validate_htb_tasks.py")], check=True)
     if not ZIP.is_file():
         raise ValueError("Student archive missing")
     manifest = (ART / "custody_manifest.sha256").read_text(encoding="utf-8").splitlines()
