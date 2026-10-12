@@ -55,7 +55,7 @@ gaps = [
     ("nrg-gw-07","03:06:15Z","03:12:27Z","audit","sequence-8102-8103","missing-rows","unknown"),
     ("nrg-gw-07","03:12:00Z","03:20:00Z","volatile-memory","full-memory-image","not-collected","unknown"),
     ("nrg-gw-07","03:12:00Z","03:20:00Z","firmware","independent-firmware-image","not-collected","unknown"),
-    ("nrg-sensor-04","03:16:00Z","03:19:00Z","network","tcp-session-packets","not-collected","unknown"),
+    ("nrg-sensor-04","03:16:00Z","03:19:00Z","network","full-tcp-session","capture-incomplete","unknown"),
     ("nrg-idp-01","03:00:00Z","03:10:00Z","identity","human-operator-binding","not-collected","unknown"),
 ]
 emit("acquisition_gaps.csv",["host","start_utc_time","end_utc_time","collection","artifact","status","inference"],[
