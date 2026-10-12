@@ -11,8 +11,10 @@ ROOT = Path(__file__).resolve().parents[1]
 ART = ROOT / "artifacts"
 ZIP = ROOT / "dist" / "Invisible-Root-of-Trust-student.zip"
 DOCS = {
+    "README.txt",
     "docs/STUDENT_INCIDENT_BRIEF.md",
     "docs/STUDENT_EVIDENCE_RULES.md",
+    "questions/HTB_PLAYER_TASKS.md",
     "questions/INVESTIGATION.md",
 }
 HEX = re.compile(r"^[a-f0-9]{64}$")
