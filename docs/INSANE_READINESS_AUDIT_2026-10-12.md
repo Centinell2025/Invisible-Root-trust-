@@ -10,9 +10,9 @@
 
 | Measured gate | Observed |
 |---|---:|
-| Python unittest suite | **73 tests passed** |
+| Python unittest suite | **81 tests passed** |
 | Scientific question–source mappings | **30/30** |
-| Verified generated evidence files (excluding SHA manifest) | **32** |
+| Verified generated evidence files (excluding SHA manifest) | **35** |
 | Linux auth/syslog lines | **83** |
 | auditd-like lines | **41** |
 | Extended journal records | **68** |
@@ -21,6 +21,9 @@
 | Outbound TCP application-like bytes present in capture | **53** |
 | Outbound byte count asserted by the *separate* flow record | **9,821** |
 | Indexed simulated acquisition sources | **5** |
+| Derived SQLite event records across five hosts | **1,257** |
+| Derived SQLite flow entries | **377** |
+| Scoped TAR file and symlink entries | **9** |
 
 **Interpretation:** The captured TCP exchange validates a limited five-tuple and handshake but does **not** account for the flow-export total, authenticated TLS, exfiltration, or packet provenance. The original single-UDP `synthetic_telemetry.pcap` remains an additional negative-control specimen; it is not part of the correlated TCP conversation. Conflicting sources are designed to test careful reasoning, not to secretly declare an attack.
 
@@ -33,6 +36,9 @@
 - `auth_syslog.log`, `auditd_extract.log` and `journal_extended.jsonl` contain background activity and Linux-shaped events; there is a controlled suspicious subset to investigate.
 - `edge_sensor_capture.pcap` contains Ethernet/IPv4/TCP/UDP frames with validated checksums, a TCP handshake, limited application-like data and background decoys.
 - `acquisition_register.csv` describes collection source, scope and limitations. All `verified_origin` fields remain **no**, correctly reflecting a simulation.
+- `endpoint_telemetry.sqlite3` adds a queryable five-host analytical cache with 1,257 rows and 377 flow records. It is **derived**, not an independent second witness.
+- `offline_gateway_triage.tar` supplies an offline **file-level** acquisition, including FIM-correlated policy bytes, the unit file, its enablement symlink and selected Linux logs. It is **not** a sector-level disk image.
+- `tools/validate_snapshot.py` validates actual SQL joins, boot identity limitations, tar entry hashes and the scope disclaimer. `tests/test_snapshot.py` adds database and TAR tampering negative controls.
 
 ## QA controls and negative tests
 
@@ -45,7 +51,7 @@ The student ZIP is built by `tools/build_submission.py` and rechecked by `tools/
 ## Critical scientific limitations still open
 
 1. **No verified root-of-trust hardware acquisition.** Software SHA-256 policy measurements do not prove firmware execution, platform reset-chain integrity, or TPM quote authenticity.
-2. **No realistic full-memory or offline-disk forensic acquisition.** The memory specimen is synthetic. The systemd unit can be inspected, but complete on-disk persistence and survival after a reboot have not been proved.
+2. **No verified full-memory or sector-level offline-disk acquisition.** There is a realistic *scoped TAR* and SQLite cache, not a complete disk/RAM image. The unit file and enablement symlink can be inspected, but all-disk persistence and execution after a verified reboot are not proved.
 3. **Partial network coverage.** The packet capture corroborates limited TCP connectivity; it does not establish the full reported flow, any remote command, malicious intent, or data theft.
 4. **Assessment answerability not proved.** The 30 source-mapping contracts establish possible inputs; they do not grade 30 complete answers. All final reasoning prompts still need human review.
 5. **No private, verified instructor key or independent cold solve.** This public development repository exposes generator logic and should not be distributed to blind-solve participants. Send the student ZIP only.
