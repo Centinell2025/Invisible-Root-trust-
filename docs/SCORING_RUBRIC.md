@@ -7,7 +7,7 @@
 - Network-flow / PCAP discrepancy recognition: 10 points
 - Alternative hypotheses and explicit limits: 10 points
 - Containment and trusted recovery strategy: 10 points
-Total 100 points. Target for cold-solve: require defensible written reasoning, not just filenames. Do not equate high score or high question count with HTB Insane acceptance.
+Total 100 points. Target for cold-solve: require defensible written reasoning, not just filenames. Do not equate high score or high question count with HTB Hard acceptance.
 
 ## Separation
-A private instructor grader and canonical key have **not** been verified or published. The student archive uses an allowlist; answer keys must remain in a separate private instructor repository.
+A confidential instructor key and walkthrough have been assembled and verified against the delivered student ZIP; they are **not published in this repository**. Independent cold-solve and HTB acceptance remain pending. The student archive uses an allowlist; answer keys must remain in a separate private instructor repository.
