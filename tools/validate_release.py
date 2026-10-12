@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Strict release checks for a student ZIP. Uses only Python standard library."""
+"""Independently verify student archive membership, custody and contents."""
 import hashlib
 import re
 import subprocess
@@ -11,11 +11,12 @@ ROOT = Path(__file__).resolve().parents[1]
 ART = ROOT / "artifacts"
 ZIP = ROOT / "dist" / "Invisible-Root-of-Trust-student.zip"
 DOCS = {
-    "README.md",
+    "questions/CASE_BRIEFING.md",
     "questions/INVESTIGATION.md",
     "questions/ADVANCED_PIVOTS.md",
-    "docs/CASE_DESIGN.md",
-    "docs/ADVANCED_ANALYST_GUIDE.md",
+    "docs/INCIDENT_NARRATIVE.md",
+    "docs/SCIENTIFIC_INVESTIGATION_PROTOCOL.md",
+    "docs/FORENSIC_LIMITATIONS.md",
 }
 HEX = re.compile(r"^[a-f0-9]{64}$")
 
