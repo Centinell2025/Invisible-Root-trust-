@@ -127,6 +127,16 @@ class ScientificInvestigationTests(unittest.TestCase):
                                 "tcp/443 flow entry", "its actual transport protocol differed"):
                     self.assertNotIn(spoiler, text, filename)
 
+    def test_beacon_corporate_authorship_seal_is_in_student_release(self):
+        import zipfile
+        subprocess.run([sys.executable, str(ROOT / "tools" / "build_submission.py")], check=True)
+        archive = ROOT / "dist" / "Invisible-Root-of-Trust-student.zip"
+        with zipfile.ZipFile(archive) as z:
+            brief = z.read("docs/STUDENT_INCIDENT_BRIEF.md").decode("utf-8")
+            self.assertIn("SELLO DE AUTORÍA | BEACON OF THE EAGLE LLC", brief)
+            self.assertIn("Centinell Suite Defense", brief)
+            self.assertIn("All incident evidence and entities are simulated", brief)
+
     def test_insane_release_is_not_auto_certified(self):
         with self.assertRaisesRegex(ValueError, "INSANE RELEASE BLOCKED"):
             GATE.run("insane")
