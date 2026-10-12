@@ -26,3 +26,12 @@ jobs:
         run: python3 tools/build_submission.py
       - name: Verify sealed release membership and hashes
         run: python3 tools/validate_release.py
+
+      - name: Publish tested student-only archive
+        if: success() && github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: invisible-root-of-trust-student
+          path: dist/Invisible-Root-of-Trust-student.zip
+          if-no-files-found: error
+          retention-days: 30
