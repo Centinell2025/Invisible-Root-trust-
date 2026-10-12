@@ -44,7 +44,7 @@ claims = [
     ("2026-09-17T03:12:29Z","nrg-gw-07","CLM-001","nrg-update.service","signed-maintenance","local-journal","self-reported"),
     ("2026-09-17T03:13:10Z","nrg-build-03","CLM-002","CHG-421","approved-deployment","deployment-ledger","contradicted"),
     ("2026-09-17T03:16:40Z","nrg-gw-07","CLM-003","boot-health-agent.service","service-started","local-journal","self-reported"),
-    ("2026-09-17T03:17:07Z","nrg-sensor-04","CLM-004","198.51.100.73","tcp-egress","flow-export","unverified-by-pcap"),
+    ("2026-09-17T03:17:07Z","nrg-sensor-04","CLM-004","198.51.100.73","tcp-egress","flow-export","partially-corroborated-by-edge-capture"),
     ("2026-09-17T03:18:02Z","nrg-gw-07","CLM-005","shim-policy","measurement-mismatch","attestation-agent","self-reported"),
 ]
 emit("claim_provenance.csv",["utc","host","claim_id","subject","claim","source","evidence_status"],[
