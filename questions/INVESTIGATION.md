@@ -101,7 +101,7 @@ Two copies or restatements of one source do not constitute independent corrobora
 **21 — WHY might a legitimate maintenance explanation fit part of the evidence?** Identify observations consistent with approved work and observations that contradict that interpretation. What test would discriminate between an administrative mistake and an unauthorized change?  
 **Deliverable:** Hypothesis H1 with supporting and contradicting sources.
 
-**22 — WHY might an unauthorized configuration modification be the best *limited* explanation?** Cite the strongest evidence and name the precise point beyond which the claim becomes speculative.  
+**22 — WHY is an unauthorized configuration modification a plausible explanation rather than an established verdict?** Cite the strongest evidence, identify any competing authorized-change explanation, and name the precise point beyond which the claim becomes speculative. What independent evidence would reverse your conclusion?  
 **Deliverable:** Hypothesis H2 and falsification condition.
 
 **23 — WHY is actual root-of-trust compromise a separate hypothesis?** Identify what hardware-backed attestation, trusted boot measurements, independent firmware imaging and recovery validation would be required. Which of those are absent?  
