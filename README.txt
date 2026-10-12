@@ -1,5 +1,6 @@
 INVISIBLE ROOT OF TRUST — INVESTIGATION PACKAGE
 Case NRG-IR-2026-0917 | Fictional DFIR training laboratory
+PROPOSED HTB DIFFICULTY: HARD (subject to review; not an accepted classification)
 Publisher: BEACON OF THE EAGLE LLC
 Research brand: CENTINELL SUITE DEFENSE
 Copyright (c) 2026 Beacon of the Eagle LLC
