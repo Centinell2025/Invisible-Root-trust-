@@ -29,14 +29,14 @@ The automated tests must verify:
 - Exactly **30 unique, sequentially numbered questions** organized into six investigation phases.
 - A minimum of two *candidate* evidence sources associated with each question. Distinct filenames are **not** necessarily independent sources.
 - Integrity and exhaustive inventory consistency of the synthetic case files.
-- A real byte-level difference between policy specimens and cryptographically correct specimen hashes.
+- A real byte-level difference between policy specimens, their cryptographically correct hashes, the derived software measurement and file-integrity timeline, while requiring that all hardware-attestation fields remain unverified.
 - Authentication, privileged session, audited write, cross-host reference and audit gap correlations.
 - Signed/approved/rejected deployment differences and lack of an approved deployment for an unapproved change ticket.
 - Explicit source-clock uncertainty; timestamps without a justified calibration cannot silently be normalized.
 - Syntactically valid Ethernet/IPv4 packet capture with the **correct 2026 incident date**.
-- The intended **UDP packet versus TCP flow** discrepancy, without falsely treating the sources as independent confirmation of exfiltration.
+- Separate the legacy UDP-only packet from the partial **TCP handshake, sample payload and UDP lookalike** in the additional edge-sensor PCAP. Validate actual on-wire checksums, endpoints and capture completeness. No source alone proves exfiltration.
 - A student's ZIP that contains the investigative brief and artifacts but excludes development and instructor-only material.
-- **Negative controls:** malformed or truncated PCAP, altered change approval, missing phase and duplicate question number must be rejected.
+- **Negative controls:** malformed or truncated PCAP, invalid IPv4/TCP/UDP checksums, tampered policy hash derivation, false TPM-attestation claim, broken process lineage, altered change approval, missing phase and duplicate question number must be rejected.
 
 ## Research examination — what to evaluate in each phase
 
@@ -92,6 +92,6 @@ The following remain **open**:
 - No privately verified grading key covering 30 final answers exists in the repository.
 - The policy specimens are mock data; no trustworthy firmware acquisition or hardware attestation is distributed.
 - The memory excerpt is not a forensic RAM image.
-- The single UDP packet deliberately cannot corroborate the claimed TCP flow.
+- The legacy single UDP packet does not corroborate TCP; the new eight-packet edge-sensor sample supports only a limited TCP connection and not the full byte count, authentic TLS, payload purpose or exfiltration.
 
 **Release policy:** Passing the engineering gate permits continued development and reproducible distribution for testing. It does **not** authorize calling the lab Insane or promising HTB acceptance.
