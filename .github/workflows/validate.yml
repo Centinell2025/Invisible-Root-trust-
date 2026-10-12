@@ -18,6 +18,8 @@ jobs:
         run: python3 tools/run_full_case.py
       - name: Verify 30 scientific question evidence contracts
         run: python3 tools/scientific_quality_gate.py
+      - name: Verify HTB exact-answer tasks and student README
+        run: python3 tools/validate_htb_tasks.py
       - name: Execute forensic regression and negative-control tests
         run: python3 -m unittest discover -s tests -v
       - name: Rebuild deterministic evidence after tests
