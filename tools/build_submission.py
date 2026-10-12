@@ -14,8 +14,10 @@ subprocess.run([sys.executable, str(root / "tools" / "validate_snapshot.py")], c
 subprocess.run([sys.executable, str(root / "tools" / "scientific_quality_gate.py")], check=True)
 destination.mkdir(exist_ok=True)
 documents = (
+    "README.txt",
     "docs/STUDENT_INCIDENT_BRIEF.md",
     "docs/STUDENT_EVIDENCE_RULES.md",
+    "questions/HTB_PLAYER_TASKS.md",
     "questions/INVESTIGATION.md",
 )
 entries = sorted(p for p in evidence.iterdir() if p.is_file())
