@@ -38,6 +38,20 @@ class RealisticCaseTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Truncated"):
             VALIDATOR.packets_from_pcap(data[:-4])
 
+    def test_audit_order_is_chronologically_consistent(self):
+        lines = (ROOT / "artifacts" / "auditd_extract.log").read_text(encoding="utf-8").splitlines()
+        records = VALIDATOR.validate_audit_order(lines)
+        self.assertGreaterEqual(len(records), 38)
+        self.assertEqual([s for _,s in records if s in (8101,8104,8105)], [8101,8104,8105])
+
+    def test_audit_serial_inversion_is_rejected(self):
+        lines = (ROOT / "artifacts" / "auditd_extract.log").read_text(encoding="utf-8").splitlines()
+        lines = list(lines)
+        event_indexes = [i for i,x in enumerate(lines) if x.startswith("type=SYSCALL")]
+        lines[event_indexes[0]],lines[event_indexes[1]] = lines[event_indexes[1]], lines[event_indexes[0]]
+        with self.assertRaisesRegex(ValueError, "timestamp/serial inversion"):
+            VALIDATOR.validate_audit_order(lines)
+
     def test_pcap_contains_two_different_transports(self):
         packets = VALIDATOR.packets_from_pcap(
             (ROOT / "artifacts" / "edge_sensor_capture.pcap").read_bytes())
