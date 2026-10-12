@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Add deterministic, safe synthetic binary and multi-host evidence."""
 from pathlib import Path
-import hashlib,struct,csv,json
+import hashlib,struct,csv,json\nfrom datetime import datetime, timezone
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/"artifacts";OUT.mkdir(exist_ok=True)
 def write_csv(name,fields,rows):
  with (OUT/name).open("w",newline="",encoding="utf8") as f:
@@ -43,7 +43,7 @@ def pkt(src,dst,sport,dport,payload):
  return eth+hdr+udp+payload
 payload=b"NRG synthetic telemetry; investigation only"
 frame=pkt("192.0.2.17","198.51.100.73",52118,443,payload)
-pcap=struct.pack("<IHHIIII",0xa1b2c3d4,2,4,0,0,65535,1)+struct.pack("<IIII",179,0,len(frame),len(frame))+frame
+pcap=struct.pack("<IHHIIII",0xa1b2c3d4,2,4,0,0,65535,1)+struct.pack("<IIII",int(datetime(2026,9,17,3,17,7,tzinfo=timezone.utc).timestamp()),0,len(frame),len(frame))+frame
 (OUT/"synthetic_telemetry.pcap").write_bytes(pcap)
 manifest=[]
 for p in sorted(OUT.iterdir()):
