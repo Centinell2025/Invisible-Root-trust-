@@ -1,37 +1,27 @@
 # Invisible Root of Trust
+**Hack The Box Sherlock candidate | Advanced defensive DFIR | Target difficulty: Insane**
 
-**HTB Sherlock candidate | Advanced DFIR | Target difficulty: Insane**
+## Briefing
+At 03:18 UTC, fictional Northstar Research Group received an attestation discrepancy for Linux gateway `nrg-gw-07`. Investigate the relationship between identity activity, maintenance authorization, local audit records, binary policy specimens, clock skew and conflicting network observations.
 
-## Incident briefing
-At 03:18 UTC, the fictional Northstar Research Group received a boot-attestation mismatch alert for Linux gateway `nrg-gw-07`. The event conflicts with the maintenance ledger and local journal. Investigate authentication, file audit, attestation, network and change-management evidence to reconstruct the event.
+All entities, evidence and indicators are synthetic. The specimens do not demonstrate a real UEFI bootkit or memory compromise.
 
-All company names, identities and events are fictional. No executable malware or real bootkit is distributed.
-
-## Getting started
+## Build and verify
 Requires Python 3.10+ (standard library only):
-
 ```bash
-python3 tools/generate_case.py
-cd artifacts
-sha256sum -c custody_manifest.sha256
+python3 tools/run_full_case.py
+python3 -m unittest discover -s tests -v
+python3 tools/build_submission.py
 ```
+Evidence appears in `artifacts/`, and the student-only archive appears in `dist/`. Verify integrity using `cd artifacts && sha256sum -c custody_manifest.sha256`.
 
-Then open [the investigation worksheet](questions/INVESTIGATION.md) with 30 forensic investigation questions. Use the [case design](docs/CASE_DESIGN.md) to understand artifact limitations, not for answer values.
+## Student materials
+- [Investigation worksheet](questions/INVESTIGATION.md)
+- [Advanced evidence pivots](questions/ADVANCED_PIVOTS.md)
+- [Advanced analyst guidance](docs/ADVANCED_ANALYST_GUIDE.md)
+- [Case design and limitations](docs/CASE_DESIGN.md)
 
-## Evidence generated
-- `secure_boot_attestation.csv` — simulated measured boot discrepancy
-- `auth_events.csv` — account logins and privilege events
-- `audit_events.csv` — audited configuration changes with sequence gaps
-- `journal_export.jsonl` — service and attestation events
-- `network_flows.csv` — synthetic egress metadata
-- `change_tickets.csv` — approved or rejected maintenance windows
-- `firmware_inventory.csv` — baseline versions
-- `custody_manifest.sha256` — generated artifact hashes
+## Internal development
+This public repository contains development code. It is **not a confidential challenge distribution**: Git history may reveal removed files, and generator scripts inherently disclose clues. Distribute only the reviewed student ZIP to learners, and host instructor solutions in a separate private repository. Do not submit before independent playtesting, answer uniqueness review, and evidence quality verification.
 
-## Investigation goals
-Identify the trust discrepancy, connect the privileged session with changes, validate conflicting sources, assess the limits of persistence claims, reconstruct the timeline, and specify safe containment and recovery.
-
-## Publication and readiness
-This repository contains a **starter case**, not yet a completed or independently playtested HTB Insane Sherlock. Actual platform submission requires richer forensic evidence, exact machine-gradable answers, instructor walkthrough, QA tests and review. The instructor answer key must be maintained privately, outside this public repository.
-
-Copyright (c) 2026 Centinell Suite Defense. Training/evaluation use only.
+Copyright (c) 2026 Centinell Suite Defense. Educational use only.
