@@ -33,6 +33,7 @@ The required `README.txt`, these four student documents and the generated forens
 python3 tools/run_full_case.py
 python3 tools/scientific_quality_gate.py
 python3 tools/validate_realistic.py
+python3 tools/validate_snapshot.py
 python3 -m unittest discover -s tests -v
 python3 tools/build_submission.py
 python3 tools/validate_release.py
