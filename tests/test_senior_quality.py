@@ -137,6 +137,20 @@ class ScientificInvestigationTests(unittest.TestCase):
             self.assertIn("Centinell Suite Defense", brief)
             self.assertIn("All incident evidence and entities are simulated", brief)
 
+    def test_proposed_hard_difficulty_in_student_archive(self):
+        import zipfile
+        archive = ROOT / "dist" / "Invisible-Root-of-Trust-student.zip"
+        subprocess.run([sys.executable, str(ROOT / "tools" / "build_submission.py")], check=True)
+        with zipfile.ZipFile(archive) as z:
+            self.assertIn("PROPOSED HTB DIFFICULTY: HARD", z.read("README.txt").decode("utf-8"))
+            self.assertIn("Difficulty proposed for HTB:** Hard",
+                          z.read("questions/HTB_PLAYER_TASKS.md").decode("utf-8"))
+            self.assertIn("Requested HTB difficulty:** Hard",
+                          z.read("docs/STUDENT_INCIDENT_BRIEF.md").decode("utf-8"))
+            for item in ("README.txt", "questions/HTB_PLAYER_TASKS.md", "docs/STUDENT_INCIDENT_BRIEF.md"):
+                content = z.read(item).decode("utf-8")
+                self.assertNotIn("Target difficulty: Insane", content)
+
     def test_hard_release_is_not_auto_certified(self):
         with self.assertRaisesRegex(ValueError, "HARD READINESS NOT YET VERIFIED"):
             GATE.run("hard")
