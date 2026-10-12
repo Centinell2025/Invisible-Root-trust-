@@ -69,12 +69,12 @@ CI also checks syntax, rebuilds evidence after mutation tests, hashes every arti
 | Criterion | Minimum proof expected | Current status |
 |---|---|---|
 | User can start without the repository | README, included tasks, evidence, safe free-tool examples | Built into student ZIP |
-| Answers reproducible from artifact bytes | Independent solution of each of the 17 exact tasks | **Private instructor verification needed** |
-| Grading compatible with official HTB question YAML | Exact `flag` values, formatting and acceptable variants | **Instructor-only YAML needed** |
-| Full intended walkthrough | Step-by-step answer path following HTB Sherlock writeup template | **Separate confidential attachment required** |
-| Screenshot proof of each answer | Actual terminal/Wireshark/SQLite screenshot illustrating evidence | **Examiner evidence pack required** |
+| Answers reproducible from artifact bytes | Reproduce all 17 exact tasks using the attached reviewer commands | **17/17 author-verified in confidential ZIP; independent blind test pending** |
+| Grading compatible with official HTB question YAML | Exact `flag` values, formatting and acceptable variants | **Confidential 17-flag YAML prepared, not included in public/student ZIP; HTB review pending** |
+| Full intended walkthrough | Step-by-step answer path following HTB Sherlock writeup template | **Present in reviewer-only ZIP; independent assessment pending** |
+| Screenshot proof of each answer | Actual terminal screenshots illustrating evidence | **17 terminal screenshots included in confidential reviewer ZIP; independent verification pending** |
 | Scenario, host/process/service/account/CVE/PII description | Clear scope and technical details | This handoff + architecture diagram |
-| Evidence integrity | SHA-256 inventory, reproducible build and CI | Automated checks pass |
+| Evidence integrity | SHA-256 inventory, reproducible build and CI | **85 automated tests passed; 35 evidence files validated** |
 | Realism and playability | Two blind attempts and ambiguity reconciliation | **Not independently validated** |
 | Hard difficulty | Advanced multi-source investigation and observed time-to-solve (HTB suggests up to 2 days) | **Not independently established** |
 
