@@ -12,5 +12,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - run: python3 tools/run_full_case.py
       - run: python3 -m unittest discover -s tests -v
-      - run: python3 tools/validate_case.py
+      - run: python3 tools/build_submission.py
