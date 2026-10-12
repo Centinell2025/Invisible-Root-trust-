@@ -54,15 +54,18 @@ Use only the supplied artifacts. Preserve capitalization, timestamp precision, p
 **Task 13.** How many outbound **TCP application-payload bytes** from that five-tuple are actually present in the **partial** `edge_sensor_capture.pcap`? Count TCP payload bytes only; exclude Ethernet/IP/TCP headers, ACK-only packets, and UDP traffic.  
 **Answer format:** decimal byte count.
 
-## Stage V — Scientific trust finding
+## Stage V — Reconcile clocks, SQL evidence and the trust boundary
 
-**Task 14.** How many `host_events` records are in the provided read-only SQLite analysis cache?  
-**Answer format:** decimal row count.
+**Task 14.** Find the VPN `session-accepted` observation on `nrg-bastion-02` associated with `AUTH-701` in `multi_host_events.csv`. Correct its timestamp using the **matching VPN source-clock offset only** from `clock_calibration.csv`, under the documented convention `recorded UTC = true UTC + offset`. What is the resulting normalized UTC?  
+**Answer format:** `YYYY-MM-DDTHH:MM:SSZ`. Do not infer a verified causal order without error bounds.
 
-**Task 15.** What is the exact `collection_status` value for `TPM2-quote` in `trust_anchor_inventory.csv`?  
+**Task 15.** Query `endpoint_telemetry.sqlite3` for the `file-write` event on the affected policy path correlated with the privileged session and write-process ancestry. What is that event's **event_id**?  
+**Answer format:** `EVT-NNNN`. The SQLite cache is derived, not an independent witness.
+
+**Task 16.** What is the exact `collection_status` value for `TPM2-quote` in `trust_anchor_inventory.csv`?  
 **Answer format:** value copied exactly from the CSV, including hyphen if present.
 
-**Task 16.** Based **only on the distributed evidence**, which finding correctly describes whether a hardware-root-of-trust compromise has been **proven**?  
+**Task 17.** Based **only on the distributed evidence**, which finding correctly describes whether a hardware-root-of-trust compromise has been **proven**?  
 **Answer format:** `ESTABLISHED` or `NOT ESTABLISHED` (uppercase, with space if applicable). Explain your reasoning separately in the research memo.
 
 ## Scientific completion task (human assessed; not an HTB exact flag)
