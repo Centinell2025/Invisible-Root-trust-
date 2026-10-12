@@ -2,7 +2,7 @@
 **Publisher:** Beacon of the Eagle LLC  
 **Research brand:** Centinell Suite Defense  
 **Case ID:** NRG-IR-2026-0917 · **Submitted track:** Hack The Box Sherlock candidate  
-**Intended category:** DFIR / Linux / Incident Response · **Target:** Insane (subject to HTB review)  
+**Intended category:** DFIR / Linux / Incident Response · **Target:** Hard (proposed; subject to HTB review)  
 **Status:** Technical candidate; formal HTB acceptance, difficulty and quality bonus are **not** established.
 
 ## 1. What the reviewer receives
@@ -76,13 +76,13 @@ CI also checks syntax, rebuilds evidence after mutation tests, hashes every arti
 | Scenario, host/process/service/account/CVE/PII description | Clear scope and technical details | This handoff + architecture diagram |
 | Evidence integrity | SHA-256 inventory, reproducible build and CI | Automated checks pass |
 | Realism and playability | Two blind attempts and ambiguity reconciliation | **Not independently validated** |
-| Insane difficulty | Expert multi-stage investigation and observed time-to-solve | **Not independently established** |
+| Hard difficulty | Advanced multi-source investigation and observed time-to-solve (HTB suggests up to 2 days) | **Not independently established** |
 
 The 30-question research worksheet is intentionally harder to grade automatically; HTB's platform should receive the 17 discrete task fields and a **separately confidential** human-reviewed incident conclusion. Editors may choose to revise the number and difficulty after cold-solve results.
 
 ## 7. Reviewer feedback requested
 
-Please assess evidence realism, task wording and ambiguity, whether the incidental data produce meaningful forensic discrimination, coverage of an expert Linux DFIR workflow, and whether the experience truly warrants the **Insane** label. Record any expected answer variants and unintended shortcuts.
+Please assess evidence realism, task wording and ambiguity, whether the incidental data produce meaningful forensic discrimination, coverage of an expert Linux DFIR workflow, and whether the experience meets the **Hard** difficulty requirements. Record any expected answer variants and unintended shortcuts.
 
 An excellent review should not be obtained by hiding limitations or claiming software measurements prove a hardware root-of-trust failure. The scientific objective is knowing both **what can be proved and what cannot**.
 
