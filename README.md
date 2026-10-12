@@ -11,10 +11,14 @@ Requires Python 3.10+ (standard library only):
 ```bash
 python3 tools/run_full_case.py
 python3 tools/validate_realistic.py
+python3 tools/validate_snapshot.py
 python3 -m unittest discover -s tests -v
 python3 tools/build_submission.py
 ```
 Evidence appears in `artifacts/`, and the student-only archive appears in `dist/`. Verify integrity using `cd artifacts && sha256sum -c custody_manifest.sha256`.
+
+## Expanded forensic acquisitions
+The generated package now includes a five-host SQLite correlation cache (`endpoint_telemetry.sqlite3`, over 1,200 synthetic host events and 370 synthetic flow records) and a scoped Linux TAR triage (`offline_gateway_triage.tar`) with unit files, a service enablement symlink, and selected logs. **The TAR is not a sector disk image, the SQLite database is derived rather than an independent witness, and no real company is a victim.** See [architecture and provenance](docs/ARCHITECTURE_AND_PROVENANCE.md) and [the Insane readiness audit](docs/INSANE_READINESS_AUDIT_2026-10-12.md).
 
 ## Student materials (reviewed ZIP allowlist)
 - [Student incident briefing](docs/STUDENT_INCIDENT_BRIEF.md)
