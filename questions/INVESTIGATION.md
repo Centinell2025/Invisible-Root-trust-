@@ -57,7 +57,7 @@ Two copies or restatements of one source do not constitute independent corrobora
 
 **Investigation objective:** Construct an auditable timeline while preserving clock and collection uncertainty.
 
-**10 — WHEN was the earliest recorded candidate access?** Correlate `session_lineage.csv`, `auth_events.csv` and `multi_host_events.csv`; distinguish earliest observed time from proven initiation time.  
+**10 — WHEN was the earliest recorded candidate access?** Correlate `session_lineage.csv`, `auth_events.csv`, `multi_host_events.csv` and the SQLite host-event cache. Distinguish earliest observed time from proven initiation time; explain why a derived SQLite cache is not a new independent witness.  
 **Deliverable:** Chronology with timestamps, hosts and event IDs.
 
 **11 — WHEN was privileged activity recorded?** Identify login, elevation, audit open, write and close, with exact identifiers. Which intervals are merely differences between source timestamps?  
@@ -69,7 +69,7 @@ Two copies or restatements of one source do not constitute independent corrobora
 **13 — WHEN do events occur after defensible clock correction?** Read `clock_calibration.csv`; apply corrections only to explicitly matched source clocks. Which orderings remain uncertain without error intervals?  
 **Deliverable:** Raw-versus-adjusted timeline; unknown offsets marked unknown.
 
-**14 — WHEN could persistence first have been introduced, and WHEN was it proven?** Compare policy change, service label, subsequent attestation and the available collection gaps. Do the artifacts establish survival across a reboot?  
+**14 — WHEN could persistence first have been introduced, and WHEN was it proven?** Compare the policy change, service activity, installation metadata in the scoped offline tar, SQLite boot-inventory records and collection gaps. Does a unit-file symlink by itself demonstrate execution or survival across a later boot?  
 **Deliverable:** Earliest candidate opportunity and explicit persistence status.
 
 ## Phase 4 — WHO acted, and HOW was the apparent change performed? (15–20)
@@ -79,10 +79,10 @@ Two copies or restatements of one source do not constitute independent corrobora
 **15 — WHO is the recorded principal?** Identify the service account, source IP and session references. What is known about the principal, and what remains unknown about a human operator?  
 **Deliverable:** Identity/attribution statement.
 
-**16 — HOW do the identity, bastion and gateway events connect?** Join available shared IDs, compare event semantics and identify any join that relies only on a common username.  
+**16 — HOW do the identity, bastion and gateway events connect?** Build and execute a reproducible SQL query against `endpoint_telemetry.sqlite3` and corroborate its results against the independent original log streams. Identify joins that rely only on a common username, recycled PID or derived cache field.  
 **Deliverable:** Correlation graph with each edge marked observed, inferred or unsupported.
 
-**17 — HOW could an unauthorized policy change have occurred?** Build the shortest evidence-supported sequence from access through privileged operation to policy write. What additional evidence would establish the responsible process or command?  
+**17 — HOW could an unauthorized policy change have occurred?** Reconstruct access, parent/child process ancestry, privilege escalation and audited write from `auth_syslog.log`, `auditd_extract.log`, the process inventory and the SQLite event cache. Which specific relationships are independently observed and which remain local telemetry claims?  
 **Deliverable:** Mechanism chain and missing execution detail.
 
 **18 — HOW credible is the local "routine signed update" statement?** Compare the journal claim with the change ledger, deployment provenance and firmware inventory. Does any source verify execution of a specific package?  
@@ -91,7 +91,7 @@ Two copies or restatements of one source do not constitute independent corrobora
 **19 — HOW can misleading telemetry imitate a deeper attack?** Independently parse the flow export and both packet-capture specimens. Compare source time, protocol, five-tuple, observed TCP handshake, socket-to-process data, captured application bytes and reported flow byte count. What is established about connectivity, and what is *not* established about the complete session or transfer purpose?  
 **Deliverable:** Protocol-level falsification test and verdict.
 
-**20 — HOW could persistence arise, and what is *actually* evidenced?** Examine service activity, audited file operations, available binary specimens and the acquisition inventory. Which persistence mechanisms are demonstrated, which are candidates, and what reproducible observation would discriminate between them?  
+**20 — HOW could persistence arise, and what is *actually* evidenced?** Inspect `offline_gateway_triage.tar` without executing anything. Correlate service unit content, enablement symlink, file SHA-256, process inventory, SQLite boot observations and acquisition scope. Distinguish installed, enabled, started, successfully executed and survived-reboot states; which are actually established?  
 **Deliverable:** Persistence claim with required verification steps.
 
 ## Phase 5 — WHY did the discrepancy arise, and FOR WHAT PURPOSE? (21–25)
@@ -110,7 +110,7 @@ Two copies or restatements of one source do not constitute independent corrobora
 **24 — FOR WHAT PURPOSE could the observed service and egress have been used?** Form at least two plausible, testable purposes, including a benign purpose. What evidence would support command-and-control, data transfer or routine telemetry, and what is currently unproved?  
 **Deliverable:** Intent-versus-observation table, without invented attacker motives.
 
-**25 — WHY might the entire chain appear more conclusive than it is?** Identify correlated reports with shared provenance, clock uncertainty, audit gaps and source-specific semantics. Which two or more apparent confirmations are not actually independent?  
+**25 — WHY might the entire chain appear more conclusive than it is?** Trace the derivation of the SQLite cache, the tar snapshot, local software measurements, journal claims and sensor flow summaries. Identify common-cause sources, clock uncertainty, collection gaps and misleading duplicated evidence. Which apparent confirmations are really copies or reformattings of the same observation?  
 **Deliverable:** Dependency graph and uncertainty summary.
 
 ## Phase 6 — WHAT SHOULD IT DECIDE? Build an actionable and defensible verdict. (26–30)
