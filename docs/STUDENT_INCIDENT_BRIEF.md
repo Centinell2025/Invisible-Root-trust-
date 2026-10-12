@@ -1,5 +1,6 @@
 # Invisible Root of Trust — Incident Command Brief
 **Case:** NRG-IR-2026-0917 | **Scenario owner:** Centinell Suite Defense (training author; no real victim organization)  
+**Requested HTB difficulty:** Hard (not yet evaluated by HTB)  
 **Role:** Principal Digital Forensics & Incident Response Investigator  
 **Investigation window:** 17 September 2026, approximately 02:50–03:25 UTC
 
