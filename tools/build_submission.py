@@ -10,6 +10,7 @@ evidence = root / "artifacts"
 destination = root / "dist"
 subprocess.run([sys.executable, str(root / "tools" / "validate_case.py")], check=True)
 subprocess.run([sys.executable, str(root / "tools" / "validate_realistic.py")], check=True)
+subprocess.run([sys.executable, str(root / "tools" / "validate_snapshot.py")], check=True)
 subprocess.run([sys.executable, str(root / "tools" / "scientific_quality_gate.py")], check=True)
 destination.mkdir(exist_ok=True)
 documents = (
