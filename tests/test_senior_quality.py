@@ -100,7 +100,7 @@ class ScientificInvestigationTests(unittest.TestCase):
     def test_synthetic_memory_not_advertised_as_real_dump(self):
         blob = (GATE.EVIDENCE / "memory_excerpt.bin").read_bytes()
         self.assertTrue(blob.startswith(b"NRG-SYNTHETIC-MEMORY"))
-        self.assertIn("not a real", (ROOT / "docs" / "FORENSIC_LIMITATIONS.md").read_text().lower())
+        self.assertIn("not a valid raw ram dump", (ROOT / "docs" / "FORENSIC_LIMITATIONS.md").read_text().lower())
 
     def test_private_instructor_key_does_not_leak_to_student_archive(self):
         subprocess.run([sys.executable, str(ROOT / "tools" / "build_submission.py")], check=True)
