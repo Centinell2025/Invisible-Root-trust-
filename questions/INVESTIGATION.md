@@ -88,10 +88,10 @@ Two copies or restatements of one source do not constitute independent corrobora
 **18 — HOW credible is the local "routine signed update" statement?** Compare the journal claim with the change ledger, deployment provenance and firmware inventory. Does any source verify execution of a specific package?  
 **Deliverable:** Contradiction analysis and deployment confidence.
 
-**19 — HOW can misleading telemetry imitate a deeper attack?** Compare the outbound TCP flow export and the minimal UDP PCAP. Explain why a shared destination does not prove one connection or exfiltration.  
+**19 — HOW can misleading telemetry imitate a deeper attack?** Independently parse the flow export and the packet-capture specimen. Compare timestamp provenance, endpoint identifiers, protocol numbers and available connection fields. What evidence is needed before treating them as a verified session or data transfer?  
 **Deliverable:** Protocol-level falsification test and verdict.
 
-**20 — HOW would an attacker maintain persistence, and what is *actually* evidenced?** Evaluate the service start, file write, memory excerpt, mock policy binaries and absent complete memory/disk/firmware acquisitions. Separate a hypothesized mechanism from an observed installed mechanism.  
+**20 — HOW could persistence arise, and what is *actually* evidenced?** Examine service activity, audited file operations, available binary specimens and the acquisition inventory. Which persistence mechanisms are demonstrated, which are candidates, and what reproducible observation would discriminate between them?  
 **Deliverable:** Persistence claim with required verification steps.
 
 ## Phase 5 — WHY did the discrepancy arise, and FOR WHAT PURPOSE? (21–25)
