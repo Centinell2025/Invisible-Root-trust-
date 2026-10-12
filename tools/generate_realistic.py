@@ -172,24 +172,37 @@ auth_lines.sort(key=lambda x: (x[0], x[1]))
 # auditd-style messages: real Linux audit syntax shape, simulated IDs. Preserve
 # the same local event identifier in a key; audit record seq numbers 8102/8103
 # are intentionally absent from the simplified CSV, not proof of deletion.
-audit_lines = []
+# Preserve auditd timestamp ordering and monotonically increasing serial IDs.
+# The simplified export intentionally omits 8102/8103; no fake claim of tampering.
+audit_records = []
 for moment, serial, pid, syscall, item in [
     ("2026-09-17T03:06:15Z", 8101, 2417, "openat", "/etc/secureboot/policy.conf"),
     ("2026-09-17T03:12:27Z", 8104, 2421, "write", "/etc/secureboot/policy.conf"),
     ("2026-09-17T03:13:01Z", 8105, 2421, "close", "/etc/secureboot/policy.conf"),
 ]:
-    epoch = datetime.fromisoformat(moment.replace("Z", "+00:00")).timestamp()
-    audit_lines += [
-        f'type=SYSCALL msg=audit({epoch:.3f}:{serial}): arch=c000003e syscall={syscall} success=yes pid={pid} auid=1102 uid=0 key="AUTH-702"',
-        f'type=PATH msg=audit({epoch:.3f}:{serial}): item=0 name="{item}" inode=440221 nametype=NORMAL',
-    ]
+    t = datetime.fromisoformat(moment.replace("Z", "+00:00"))
+    epoch = t.timestamp()
+    audit_records.extend([
+        (t, serial, 0, f'type=SYSCALL msg=audit({epoch:.3f}:{serial}): arch=c000003e syscall={syscall} success=yes pid={pid} auid=1102 uid=0 key="AUTH-702"'),
+        (t, serial, 1, f'type=PATH msg=audit({epoch:.3f}:{serial}): item=0 name="{item}" inode=440221 nametype=NORMAL'),
+    ])
+# Background activity occurs entirely before 8101 or after 8105.
+# Synthetic serial numbers increase with time. None impersonate 8102/8103.
 for i in range(35):
-    ts = DAY + timedelta(seconds=RAND.randrange(0, 40 * 60))
-    epoch = ts.timestamp()
-    audit_lines.append(
-        f'type=SYSCALL msg=audit({epoch:.3f}:{8600+i}): arch=c000003e syscall=openat success=yes pid={4800+i} auid=0 uid=0 key="routine-maintenance"'
+    if i < 20:
+        t = datetime(2026, 9, 17, 2, 50, tzinfo=timezone.utc) + timedelta(seconds=38 * i)
+        serial = 8070 + i
+    else:
+        t = datetime(2026, 9, 17, 3, 13, 20, tzinfo=timezone.utc) + timedelta(seconds=40 * (i - 20))
+        serial = 8110 + (i - 20)
+    epoch = t.timestamp()
+    audit_records.append(
+        (t, serial, 0, f'type=SYSCALL msg=audit({epoch:.3f}:{serial}): arch=c000003e syscall=openat success=yes pid={4800+i} auid=0 uid=0 key="routine-maintenance"')
     )
-(OUT / "auditd_extract.log").write_text("\n".join(audit_lines) + "\n", encoding="utf-8")
+audit_records.sort(key=lambda r:(r[0],r[1],r[2]))
+(OUT / "auditd_extract.log").write_text(
+    "\n".join(row[3] for row in audit_records) + "\n", encoding="utf-8"
+)
 
 # Sensor capture: valid Ethernet/IPv4 TCP + UDP frames with checksums. TCP
 # handshake plus short application-like data is not a complete exfil session.
