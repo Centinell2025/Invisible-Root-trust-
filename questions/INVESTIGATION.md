@@ -50,7 +50,7 @@ Two copies or restatements of one source do not constitute independent corrobora
 **08 — WHERE was software deployment authorized or rejected?** Compare the change ticket, target host, package signatures, approval states and firmware inventory. Explain why signed, approved, deployed and executed are not interchangeable.  
 **Deliverable:** Authorization-versus-execution matrix.
 
-**09 — WHERE is the reported network activity, and WHERE is its independent packet evidence?** Identify flow destination and transport; inspect the PCAP's actual transport, timestamp and available endpoint identifiers. Can they be associated as the same session?  
+**09 — WHERE is the reported network activity, and WHERE is its independent packet evidence?** Identify flow destination and transport; inspect *all* supplied capture specimens, their provenance, timestamps, five-tuples and available connection identifiers. Which packets, if any, can be attributed to the recorded flow and what coverage gaps remain?  
 **Deliverable:** Flow-to-packet correlation verdict with missing fields.
 
 ## Phase 3 — WHEN did events occur? Reconcile time and missing observations. (10–14)
@@ -88,7 +88,7 @@ Two copies or restatements of one source do not constitute independent corrobora
 **18 — HOW credible is the local "routine signed update" statement?** Compare the journal claim with the change ledger, deployment provenance and firmware inventory. Does any source verify execution of a specific package?  
 **Deliverable:** Contradiction analysis and deployment confidence.
 
-**19 — HOW can misleading telemetry imitate a deeper attack?** Independently parse the flow export and the packet-capture specimen. Compare timestamp provenance, endpoint identifiers, protocol numbers and available connection fields. What evidence is needed before treating them as a verified session or data transfer?  
+**19 — HOW can misleading telemetry imitate a deeper attack?** Independently parse the flow export and both packet-capture specimens. Compare source time, protocol, five-tuple, observed TCP handshake, socket-to-process data, captured application bytes and reported flow byte count. What is established about connectivity, and what is *not* established about the complete session or transfer purpose?  
 **Deliverable:** Protocol-level falsification test and verdict.
 
 **20 — HOW could persistence arise, and what is *actually* evidenced?** Examine service activity, audited file operations, available binary specimens and the acquisition inventory. Which persistence mechanisms are demonstrated, which are candidates, and what reproducible observation would discriminate between them?  
