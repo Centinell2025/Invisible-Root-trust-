@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Scientific question/evidence QA gate for the fictional Invisible Root of Trust case.
 
-This tests investigative answerability, cross-source consistency, uncertainty,
+This tests question-source coverage, cross-source consistency, uncertainty,
 and release structure. It does NOT automatically grade narrative answers or
 certify the exercise as HTB Insane.
 """
@@ -230,8 +230,9 @@ def check_evidence():
         "evidence_files": len(expected),
         "packet_count": len(packets),
         "questions": len(QUESTION_CONTRACTS),
-        "automatable_fact_questions": sum(1 for kind, _ in QUESTION_CONTRACTS.values() if kind == "fact"),
-        "human_review_questions": sum(1 for kind, _ in QUESTION_CONTRACTS.values() if kind != "fact"),
+        "questions_with_objective_subfindings": sum(1 for kind, _ in QUESTION_CONTRACTS.values() if kind == "fact"),
+        "interpretive_or_decision_focus_questions": sum(1 for kind, _ in QUESTION_CONTRACTS.values() if kind != "fact"),
+        "questions_requiring_human_final_review": 30,
     }
 
 def run(mode="engineering"):
