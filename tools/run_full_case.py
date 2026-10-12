@@ -12,7 +12,7 @@ if out.is_symlink():
     raise SystemExit("Refusing to clean symlinked artifacts directory")
 if out.exists():
     shutil.rmtree(out)
-for script in ("generate_case.py", "generate_advanced.py", "generate_research.py", "generate_realistic.py"):
+for script in ("generate_case.py", "generate_advanced.py", "generate_research.py", "generate_realistic.py", "generate_deep_snapshot.py"):
     subprocess.run([sys.executable, str(root/"tools"/script)], check=True)
 files = sorted(p for p in out.iterdir() if p.is_file() and p.name != "custody_manifest.sha256")
 (out/"custody_manifest.sha256").write_text(
