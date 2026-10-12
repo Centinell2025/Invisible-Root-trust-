@@ -58,8 +58,9 @@ def check():
         "custody_manifest.sha256" not in readme):
         raise ValueError("Mandatory README has missing author/task/hash instructions")
     handoff=REVIEW.read_text(encoding="utf-8")
-    if "Private instructor verification needed" not in handoff:
-        raise ValueError("Reviewer handoff fails to disclose private-key blocker")
+    if ("Confidential 17-flag YAML prepared" not in handoff or
+        "independent blind test pending" not in handoff.lower()):
+        raise ValueError("Reviewer handoff must disclose private answer key status and independent-testing blocker")
     print(f"PASS: {len(nums)} sequenced exact-answer task specifications, source coverage, README and authorship")
     print("INSTRUCTOR VALIDATION STILL REQUIRED: exact flags, admissible variants, full writeup and screenshot evidence")
 
