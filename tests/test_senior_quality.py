@@ -137,9 +137,9 @@ class ScientificInvestigationTests(unittest.TestCase):
             self.assertIn("Centinell Suite Defense", brief)
             self.assertIn("All incident evidence and entities are simulated", brief)
 
-    def test_insane_release_is_not_auto_certified(self):
-        with self.assertRaisesRegex(ValueError, "INSANE RELEASE BLOCKED"):
-            GATE.run("insane")
+    def test_hard_release_is_not_auto_certified(self):
+        with self.assertRaisesRegex(ValueError, "HARD READINESS NOT YET VERIFIED"):
+            GATE.run("hard")
 
 
 def _individual_contract_test(number, kind, sources):
