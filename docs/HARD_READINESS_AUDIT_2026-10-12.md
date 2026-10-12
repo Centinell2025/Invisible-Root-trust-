@@ -6,11 +6,11 @@
 
 ## Verified CI results
 
-[Latest verified 84-test build and student archive](https://github.com/Centinell2025/Invisible-Root-trust-/actions/runs/38317541868).
+[Latest verified 85-test Hard build and student archive](https://github.com/Centinell2025/Invisible-Root-trust-/actions/runs/38320404202).
 
 | Measured gate | Observed |
 |---|---:|
-| Python unittest suite | **84 tests passed** |
+| Python unittest suite | **85 tests passed** |
 | Scientific question–source mappings | **30/30** |
 | Verified generated evidence files (excluding SHA manifest) | **35** |
 | Linux auth/syslog lines | **83** |
