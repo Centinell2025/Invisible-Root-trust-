@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the *public* 16-task HTB handoff without exposing grading flags.
+"""Validate the *public* 17-task HTB handoff without exposing grading flags.
 
 Final answer correctness and acceptable variants must be tested in a
 confidential instructor package; this checker validates coverage and format.
@@ -28,9 +28,10 @@ TASKS={
 11: ("process_lineage.csv","parent-pid"),
 12: ("edge_sensor_capture.pcap","tcp-source-port"),
 13: ("edge_sensor_capture.pcap","tcp-payload-byte-count"),
-14: ("endpoint_telemetry.sqlite3","row-count"),
-15: ("trust_anchor_inventory.csv","collection-status"),
-16: ("trust_anchor_inventory.csv","trust-conclusion"),
+14: ("clock_calibration.csv","normalized-utc"),
+15: ("endpoint_telemetry.sqlite3","event-id"),
+16: ("trust_anchor_inventory.csv","collection-status"),
+17: ("trust_anchor_inventory.csv","trust-conclusion"),
 }
 NUMBERED=re.compile(r"^\*\*Task (\d{2})\.\*\*",re.M)
 FORMATS=re.compile(r"^\*\*Answer format:\*\*",re.M)
@@ -38,11 +39,11 @@ FORMATS=re.compile(r"^\*\*Answer format:\*\*",re.M)
 def check():
     tasks=TASK_FILE.read_text(encoding="utf-8")
     nums=[int(n) for n in NUMBERED.findall(tasks)]
-    if nums!=list(range(1,17)):
-        raise ValueError("Exact-answer task numbers must be 01–16, unique and sequential")
-    if len(FORMATS.findall(tasks))!=16:
+    if nums!=list(range(1,18)):
+        raise ValueError("Exact-answer task numbers must be 01–17, unique and sequential")
+    if len(FORMATS.findall(tasks))!=17:
         raise ValueError("Each task must contain exactly one answer format")
-    if len(TASKS)!=16:
+    if len(TASKS)!=17:
         raise ValueError("Task/source contract incomplete")
     for n,(name,kind) in TASKS.items():
         if not (ART/name).is_file():
