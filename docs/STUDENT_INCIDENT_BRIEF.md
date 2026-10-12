@@ -1,12 +1,12 @@
 # Invisible Root of Trust — Incident Command Brief
-**Case:** NRG-IR-2026-0917 | **Organization:** Northstar Research Group (fictional)  
+**Case:** NRG-IR-2026-0917 | **Scenario owner:** Centinell Suite Defense (training author; no real victim organization)  
 **Role:** Principal Digital Forensics & Incident Response Investigator  
 **Investigation window:** 17 September 2026, approximately 02:50–03:25 UTC
 
 ## Assignment
 During an overnight maintenance period, monitoring reported an integrity discrepancy associated with a critical Linux network gateway. The operations team believes that the change was routine. Security leadership is unwilling to authorize restoration without an independent investigation.
 
-The provided case bundle contains records from several systems, binary specimens and a network capture sample. Some information may be incomplete, inconsistent, or derived from another record. Source timestamps require scrutiny. The incident commander wants a technically defensible judgment, not an assumption that a serious alert necessarily implies a deep compromise.
+The provided case bundle contains synthetic records modeled on several Linux and network systems, offline configuration specimens, process and file-integrity observations, and partial network captures. Some information may be incomplete, inconsistent, or derived from another record. Source timestamps require scrutiny. The incident commander wants a technically defensible judgment, not an assumption that a serious alert necessarily implies a deep compromise.
 
 ## Business question
 **Did an incident demonstrably undermine system trust, and what must be verified before the organization can responsibly return the gateway to service?**
@@ -17,4 +17,4 @@ You may inspect the provided evidence, compute hashes, cross-reference events an
 ## Delivery standard
 Follow `questions/INVESTIGATION.md` in numerical order. Support each conclusion with exact artifacts and explain contradictions and uncertainty. Your final submission should include a reconstructed timeline, a competing-hypothesis analysis, and an executive go/no-go/conditional-go recommendation with concrete validation gates.
 
-**Scope:** The complete environment and artifacts are fictional training material, not an image of a production system.
+**Scope:** All systems, people, addresses and actions are fabricated training examples. Centinell Suite Defense is credited as author, not described as the victim of a real incident.
