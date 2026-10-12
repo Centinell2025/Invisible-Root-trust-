@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a reproducible student evidence bundle from allowlisted files."""
+"""Build student-only ZIP with a fixed, spoiler-conscious document allowlist."""
 from pathlib import Path
 import subprocess
 import sys
@@ -11,11 +11,12 @@ destination = root / "dist"
 subprocess.run([sys.executable, str(root / "tools" / "validate_case.py")], check=True)
 destination.mkdir(exist_ok=True)
 documents = (
-    "README.md",
+    "questions/CASE_BRIEFING.md",
     "questions/INVESTIGATION.md",
     "questions/ADVANCED_PIVOTS.md",
-    "docs/CASE_DESIGN.md",
-    "docs/ADVANCED_ANALYST_GUIDE.md",
+    "docs/INCIDENT_NARRATIVE.md",
+    "docs/SCIENTIFIC_INVESTIGATION_PROTOCOL.md",
+    "docs/FORENSIC_LIMITATIONS.md",
 )
 entries = sorted(p for p in evidence.iterdir() if p.is_file())
 if not entries or not (evidence / "custody_manifest.sha256").exists():
@@ -28,6 +29,6 @@ with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED) as z:
         z.write(p, "artifacts/" + p.name)
 with zipfile.ZipFile(archive) as z:
     names = z.namelist()
-    if any(n.startswith(("tools/", "tests/", ".github/")) for n in names):
+    if any(n.startswith(("tools/", "tests/", ".github/", "instructor/")) for n in names):
         raise SystemExit("Unexpected development file in archive")
 print("Created", archive)
