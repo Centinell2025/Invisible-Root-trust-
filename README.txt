@@ -20,7 +20,8 @@ PACKAGE CONTENTS
 ================
 - docs/STUDENT_INCIDENT_BRIEF.md : your assignment and scenario
 - docs/STUDENT_EVIDENCE_RULES.md : what qualifies as a defensible conclusion
-- questions/INVESTIGATION.md : 30 questions, six investigative stages
+- questions/HTB_PLAYER_TASKS.md : 16 objective, single-answer HTB task milestones
+- questions/INVESTIGATION.md : 30-question instructor-reviewed research extension
 - artifacts/ : simulated forensic evidence, including:
     custody_manifest.sha256         -- SHA-256 inventory
     endpoint_telemetry.sqlite3      -- derived SQL event/flow cache
@@ -41,7 +42,8 @@ and Wireshark, or analyze in a Linux VM.
 SAFE FIRST STEPS — KALI/UBUNTU
 ===============================
 1. Extract the ZIP into a new directory (do not run any contained binaries).
-2. Read docs/STUDENT_INCIDENT_BRIEF.md and questions/INVESTIGATION.md.
+2. Read docs/STUDENT_INCIDENT_BRIEF.md and questions/HTB_PLAYER_TASKS.md.
+   The 30-question INVESTIGATION.md is a deeper, narrative research extension.
 3. From the extracted package root, verify the artifact inventory:
        cd artifacts
        sha256sum -c custody_manifest.sha256
@@ -58,7 +60,7 @@ SAFE FIRST STEPS — KALI/UBUNTU
    If those tools are unavailable, Wireshark's File > Open also works.
 7. Compare the policy specimens using local SHA-256 utilities:
        sha256sum artifacts/policy_baseline.bin artifacts/policy_observed.bin
-8. Continue in question order. For each answer, cite the source filename,
+8. Continue through the 16 HTB tasks in order. For each answer, cite the source filename,
    specific record/row/offset and original UTC timestamp if present.
 
 SAFETY AND PROVENANCE
@@ -78,7 +80,8 @@ that would resolve the issue.
 WHAT TO DELIVER
 ===============
 - SHA-256/inventory verification notes
-- Artifact-cited answers to the research worksheet
+- Exact-value answers to the 16 HTB tasks (on the platform, if supplied)
+- Artifact-cited responses to the optional 30-question research extension
 - Multihost event timeline, including uncertainty
 - Observed/inferred/unknown claim matrix and competing hypotheses
 - Practical containment, recovery and independent revalidation gates
