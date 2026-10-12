@@ -1,6 +1,7 @@
 # Hack The Box Player Tasks — Invisible Root of Trust
 **Author:** Centinell Suite Defense · Beacon of the Eagle LLC  
-**Case:** NRG-IR-2026-0917 · **Data:** fully synthetic DFIR artifacts
+**Case:** NRG-IR-2026-0917 · **Data:** fully synthetic DFIR artifacts  
+**Difficulty proposed for HTB:** Hard — subject to review and independent difficulty validation
 
 ## Before starting
 Read `README.txt`, verify `artifacts/custody_manifest.sha256`, and use a safe investigation VM. These tasks are designed as **single-value, evidence-checkable milestones**. The separate `questions/INVESTIGATION.md` contains the advanced **30-question research extension**, including interpretive questions assessed by an instructor rather than automated flags.
