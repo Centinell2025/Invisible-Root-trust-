@@ -109,8 +109,23 @@ class ScientificInvestigationTests(unittest.TestCase):
         with zipfile.ZipFile(archive) as z:
             names = z.namelist()
             self.assertIn("questions/INVESTIGATION.md", names)
-            self.assertNotIn("docs/ADVANCED_ANALYST_GUIDE.md", names)
+            for forbidden in (
+                "docs/ADVANCED_ANALYST_GUIDE.md",
+                "docs/FORENSIC_LIMITATIONS.md",
+                "docs/SCIENTIFIC_INVESTIGATION_PROTOCOL.md",
+                "docs/INCIDENT_NARRATIVE.md",
+                "questions/ADVANCED_PIVOTS.md",
+                "questions/SENIOR_RESEARCH_CHALLENGES.md",
+                "questions/ROOT_OF_TRUST_DECISION.md",
+            ):
+                self.assertNotIn(forbidden, names)
             self.assertTrue(all("instructor" not in n.lower() and "answer_key" not in n.lower() for n in names))
+            for filename in ("questions/INVESTIGATION.md", "docs/STUDENT_INCIDENT_BRIEF.md",
+                             "docs/STUDENT_EVIDENCE_RULES.md"):
+                text = z.read(filename).decode("utf-8").lower()
+                for spoiler in ("minimal udp", "udp packet", "the udp sample",
+                                "tcp/443 flow entry", "its actual transport protocol differed"):
+                    self.assertNotIn(spoiler, text, filename)
 
     def test_insane_release_is_not_auto_certified(self):
         with self.assertRaisesRegex(ValueError, "INSANE RELEASE BLOCKED"):
