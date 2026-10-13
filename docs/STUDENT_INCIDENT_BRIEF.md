@@ -16,7 +16,7 @@ The provided case bundle contains synthetic records modeled on several Linux and
 You may inspect the provided evidence, compute hashes, cross-reference events and propose additional collection. You must not invent missing telemetry, assume the identity of an operator from an account label, or claim a persistence mechanism without appropriate proof.
 
 ## Delivery standard
-Start with `questions/HTB_PLAYER_TASKS.md` for the 16 exact-answer milestones, then complete `questions/INVESTIGATION.md` for the advanced research extension. Support each conclusion with exact artifacts and explain contradictions and uncertainty. Your final submission should include a reconstructed timeline, a competing-hypothesis analysis, and an executive go/no-go/conditional-go recommendation with concrete validation gates.
+Start with `questions/HTB_PLAYER_TASKS.md` for the 25 exact-answer milestones (the final eight demand deeper cross-source correlation), then complete `questions/INVESTIGATION.md` for the advanced research extension. Support each conclusion with exact artifacts and explain contradictions and uncertainty. Your final submission should include a reconstructed timeline, a competing-hypothesis analysis, and an executive go/no-go/conditional-go recommendation with concrete validation gates.
 
 **Scope:** All systems, people, addresses and actions are fabricated training examples. Centinell Suite Defense is credited as author, not described as the victim of a real incident.
 
