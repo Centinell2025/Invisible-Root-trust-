@@ -20,7 +20,7 @@
 | TCP packets associated with the short test conversation | **5** |
 | Outbound TCP application-like bytes present in capture | **53** |
 | Outbound byte count asserted by the *separate* flow record | **9,821** |
-| Indexed simulated acquisition sources | **5** |
+| Indexed simulated acquisition sources | **9** |
 | Derived SQLite event records across five hosts | **1,257** |
 | Derived SQLite flow entries | **377** |
 | Scoped TAR file and symlink entries | **9** |
@@ -39,6 +39,15 @@
 - `endpoint_telemetry.sqlite3` adds a queryable five-host analytical cache with 1,257 rows and 377 flow records. It is **derived**, not an independent second witness.
 - `offline_gateway_triage.tar` supplies an offline **file-level** acquisition, including FIM-correlated policy bytes, the unit file, its enablement symlink and selected Linux logs. It is **not** a sector-level disk image.
 - `tools/validate_snapshot.py` validates actual SQL joins, boot identity limitations, tar entry hashes and the scope disclaimer. `tests/test_snapshot.py` adds database and TAR tampering negative controls.
+
+## Hard investigation extension — four new evidence sources
+
+- `idp_session_audit.jsonl`: 59 events, including identity-token issuance, refresh/expiry activity and service-account decoys.
+- `change_approval_audit.jsonl`: 73 records; distinguishes security rejection from package quarantine and earlier pending approvals.
+- `firewall_edge_decisions.jsonl`: 91 synthetic firewall decisions, including a protocol-matched TCP allow, a denied decoy and a misleading UDP lookalike.
+- `systemd_lifecycle.jsonl`: 67 service observations; distinguishes enablement symlink from locally asserted starts and *unverified* reboot persistence.
+
+Together these include **276 background events**, explicitly registered as simulated, incomplete and unauthenticated; they add forensic discrimination but are not independent real production witnesses. The updated `tools/validate_hard_pivots.py` and 12 additional regression tests enforce cross-source consistency and reject fabricated attribution, approval, protocol and reboot claims. The student release contains 25 exact-answer checkpoints, with eight new multi-artifact Hard stages and 30 research prompts for instructor grading.
 
 ## QA controls and negative tests
 
