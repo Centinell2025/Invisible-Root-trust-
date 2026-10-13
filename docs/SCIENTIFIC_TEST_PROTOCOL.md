@@ -79,7 +79,7 @@ Score each dimension from **0 to 20**, for **100 possible points**:
 
 Before release, give the **student ZIP only** to at least two investigators who have never seen the generators, commit history or instructor reasoning. They must:
 
-1. Verify the file inventory and complete questions 01–30 without assistance.
+1. Verify the student ZIP inventory and complete **all 25 machine-graded tasks** without assistance; independently sample the longer 30-question research worksheet for scientific reasoning.
 2. Supply evidence references for each affirmative finding and explicit uncertainty for unsupported claims.
 3. Document time spent, ambiguous wording, missing evidence, divergent answers and any unintended shortcuts.
 4. Present a 400-word executive decision memo for an IT incident commander.
@@ -89,11 +89,11 @@ The instructor must reconcile disagreements and **repair artifacts/questions** w
 
 ## HTB-specific release blocker
 
-An HTB Sherlock typically needs discrete, verifiable answer fields; this public research worksheet contains compound and narrative questions. Before submission, create a separate precisely graded set with an instructor-only key, including exact values, supported equivalent answers and proof locations. Keep the complete solution out of the public repository and its history.
+This candidate now includes **25 exact-value tasks** with author-verified flags, read-only proof commands and a confidential instructor-only key/writeup; the 30-question research worksheet remains a human-assessed extension, not an extra set of official HTB flags. Never expose the instructor ZIP or commit history to blind learners.
 
 The following remain **open**:
 - No independent, documented cold-solve result has been collected.
-- No privately verified grading key covering 30 final answers exists in the repository.
+- The 25 private platform-task flags are reproduced by the author; **third-party grading/answer-variant validation remains pending**. The separate 30 research prompts are not intended as machine-scored HTB questions.
 - The policy specimens are mock data; no trustworthy firmware acquisition or hardware attestation is distributed.
 - The memory excerpt is not a forensic RAM image; the new offline TAR is a file-level triage, **not** a sector-by-sector disk image. The SQLite cache is also derived, and neither artifact authenticates a real host.
 - The legacy single UDP packet does not corroborate TCP; the new eight-packet edge-sensor sample supports only a limited TCP connection and not the full byte count, authentic TLS, payload purpose or exfiltration.
