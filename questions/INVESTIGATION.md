@@ -79,26 +79,26 @@ Two copies or restatements of one source do not constitute independent corrobora
 **15 — WHO is the recorded principal?** Identify the service account, source IP and session references. What is known about the principal, and what remains unknown about a human operator?  
 **Deliverable:** Identity/attribution statement.
 
-**16 — HOW do the identity, bastion and gateway events connect?** Build and execute a reproducible SQL query against `endpoint_telemetry.sqlite3` and corroborate its results against the independent original log streams. Identify joins that rely only on a common username, recycled PID or derived cache field.  
+**16 — HOW do the identity, bastion and gateway events connect?** Produce a reproducible cross-host timeline joining `idp_session_audit.jsonl`, `session_lineage.csv`, gateway authentication, `process_lineage.csv` and the SQLite cache. Demonstrate why token issuance, token refresh, a command channel and a privileged file write are different events. Which references survive all joins, which fail, and why does a service token not identify a human actor? Cite exact rows and acquisition scopes.  
 **Deliverable:** Correlation graph with each edge marked observed, inferred or unsupported.
 
 **17 — HOW could an unauthorized policy change have occurred?** Reconstruct access, parent/child process ancestry, privilege escalation and audited write from `auth_syslog.log`, `auditd_extract.log`, the process inventory and the SQLite event cache. Which specific relationships are independently observed and which remain local telemetry claims?  
 **Deliverable:** Mechanism chain and missing execution detail.
 
-**18 — HOW credible is the local "routine signed update" statement?** Compare the journal claim with the change ledger, deployment provenance and firmware inventory. Does any source verify execution of a specific package?  
+**18 — HOW credible is the local "routine signed update" statement?** Compare the gateway-local journal claim with `change_approval_audit.jsonl`, signed and unsigned packages, change tickets and `deployment_provenance.csv`. Identify the last security rejection before quarantine, distinguish authorization from installation and execution, and state what evidence would independently resolve the contradictory claims. Do not treat matching ticket labels as cryptographic provenance.  
 **Deliverable:** Contradiction analysis and deployment confidence.
 
-**19 — HOW can misleading telemetry imitate a deeper attack?** Independently parse the flow export and both packet-capture specimens. Compare source time, protocol, five-tuple, observed TCP handshake, socket-to-process data, captured application bytes and reported flow byte count. What is established about connectivity, and what is *not* established about the complete session or transfer purpose?  
+**19 — HOW can misleading telemetry imitate a deeper attack?** Independently parse both PCAPs, the SQL `netflow_sessions` table, `socket_observations.csv` and `firewall_edge_decisions.jsonl`. Join the entire five-tuple and process lineage, discriminate the UDP lookalike from the TCP session, count payload bytes and compute the mismatch with the flow summary. Explain why a matching firewall ALLOW and an exporter byte counter are not independent proof of content, complete coverage or exfiltration.  
 **Deliverable:** Protocol-level falsification test and verdict.
 
-**20 — HOW could persistence arise, and what is *actually* evidenced?** Inspect `offline_gateway_triage.tar` without executing anything. Correlate service unit content, enablement symlink, file SHA-256, process inventory, SQLite boot observations and acquisition scope. Distinguish installed, enabled, started, successfully executed and survived-reboot states; which are actually established?  
+**20 — HOW could persistence arise, and what is *actually* evidenced?** Inspect `offline_gateway_triage.tar` safely; reconcile exact service bytes and enablement symlink with `systemd_lifecycle.jsonl`, FIM, process lineage and two SQLite boot snapshots. Construct a state diagram with **installed → enabled → started-asserted → executed → survived verified reboot** and label each arrow observed, locally asserted or unproved. Why do equal synthetic boot IDs and the TAR's normalized metadata not establish reboot survival?  
 **Deliverable:** Persistence claim with required verification steps.
 
 ## Phase 5 — WHY did the discrepancy arise, and FOR WHAT PURPOSE? (21–25)
 
 **Investigation objective:** Evaluate competing explanations without inventing motive, certainty or a malicious actor.
 
-**21 — WHY might a legitimate maintenance explanation fit part of the evidence?** Identify observations consistent with approved work and observations that contradict that interpretation. What test would discriminate between an administrative mistake and an unauthorized change?  
+**21 — WHY might a legitimate maintenance explanation fit part of the evidence?** Investigate at least three competing stories—authorized deployment, mistaken privileged maintenance, unauthorized configuration modification. Use the IdP token/event chain, independent change-control state and approved decoy packages; for each story identify two supportive facts, two contradictions and one missing discriminator. Do not label an account holder or attack group.  
 **Deliverable:** Hypothesis H1 with supporting and contradicting sources.
 
 **22 — WHY is an unauthorized configuration modification a plausible explanation rather than an established verdict?** Cite the strongest evidence, identify any competing authorized-change explanation, and name the precise point beyond which the claim becomes speculative. What independent evidence would reverse your conclusion?  
@@ -107,10 +107,10 @@ Two copies or restatements of one source do not constitute independent corrobora
 **23 — WHY is actual root-of-trust compromise a separate hypothesis?** Identify what hardware-backed attestation, trusted boot measurements, independent firmware imaging and recovery validation would be required. Which of those are absent?  
 **Deliverable:** Hypothesis H3 and evidence acquisition plan.
 
-**24 — FOR WHAT PURPOSE could the observed service and egress have been used?** Form at least two plausible, testable purposes, including a benign purpose. What evidence would support command-and-control, data transfer or routine telemetry, and what is currently unproved?  
+**24 — FOR WHAT PURPOSE could the observed service and egress have been used?** Develop at least three testable hypotheses: service health telemetry, unauthorized remote control and data transfer. Correlate `systemd_lifecycle.jsonl`, TCP socket/process ancestry, the edge firewall decision, limited packets and the source-defined capture window. Specify what additional full-session or endpoint evidence would *falsify* each hypothesis and explain why the packet sample cannot authenticate the actual payload purpose.  
 **Deliverable:** Intent-versus-observation table, without invented attacker motives.
 
-**25 — WHY might the entire chain appear more conclusive than it is?** Trace the derivation of the SQLite cache, the tar snapshot, local software measurements, journal claims and sensor flow summaries. Identify common-cause sources, clock uncertainty, collection gaps and misleading duplicated evidence. Which apparent confirmations are really copies or reformattings of the same observation?  
+**25 — WHY might the entire chain appear more conclusive than it is?** Build a provenance dependency graph for the SQLite cache, TAR copy, local software digest, IdP export, firewall decision, change ledger and journal claims. Rank each witness by acquisition scope and `verified_origin`; distinguish **logically distinct modeled sources** from truly independently authenticated acquisitions. Identify three double-counting traps, two important missing-collection windows and at least two examples where a confident causal inference is invalid.  
 **Deliverable:** Dependency graph and uncertainty summary.
 
 ## Phase 6 — WHAT SHOULD IT DECIDE? Build an actionable and defensible verdict. (26–30)
@@ -120,7 +120,7 @@ Two copies or restatements of one source do not constitute independent corrobora
 **26 — WHAT is proved, plausible, contradicted or unknown?** Classify at minimum: recorded configuration modification, unauthorized approval, unauthorized boot-code execution, firmware compromise, persistence, exfiltration and human attribution. Every status must cite an exact artifact or explicitly note missing evidence.  
 **Deliverable:** Executive claim-evidence-status matrix.
 
-**27 — WHAT is the minimal supported incident chronology?** Present the strongest defensible sequence from observed access to measurement alarm and reported egress; mark causal links not established and retain the original time-source uncertainty.  
+**27 — WHAT is the minimal supported incident chronology?** Reconstruct a source-attributed chain from identity token and bastion channel through denied change, privilege escalation, audited write, FIM mutation, service unit observation, firewall ALLOW, partial TCP egress and software measurement alarm. Preserve raw timestamps and corrected times only where an appropriate calibration exists. Highlight contradictory ordering, audit serial gaps, clock error bounds, derived-source reuse and links that cannot be proven causal.  
 **Deliverable:** One-page incident timeline with evidence references.
 
 **28 — WHAT must the organization do immediately, and WHY?** Recommend proportionate containment that limits further access/egress while protecting volatile and durable evidence. Identify business continuity trade-offs and preservation priorities.  
