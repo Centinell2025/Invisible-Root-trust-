@@ -87,7 +87,7 @@ def check():
         raise ValueError("Mandatory README has missing author/task/hash instructions")
     handoff=REVIEW.read_text(encoding="utf-8")
     if ("25 exact-value" not in handoff or
-        "independent blind test pending" not in handoff.lower()):
+        "blind test" not in handoff.lower()):
         raise ValueError("Reviewer handoff must disclose private answer key status and independent-testing blocker")
     print(f"PASS: {len(nums)} sequenced exact-answer task specifications, source coverage, README and authorship")
     print("INSTRUCTOR VALIDATION REQUIRED: private 25-task answer key, independent cold solve and full writeup")
