@@ -21,7 +21,7 @@ PACKAGE CONTENTS
 ================
 - docs/STUDENT_INCIDENT_BRIEF.md : your assignment and scenario
 - docs/STUDENT_EVIDENCE_RULES.md : what qualifies as a defensible conclusion
-- questions/HTB_PLAYER_TASKS.md : 17 objective, single-answer HTB task milestones
+- questions/HTB_PLAYER_TASKS.md : 25 staged, exact-answer HTB tasks with 8 Hard multihost gates
 - questions/INVESTIGATION.md : 30-question instructor-reviewed research extension
 - artifacts/ : simulated forensic evidence, including:
     custody_manifest.sha256         -- SHA-256 inventory
@@ -44,7 +44,7 @@ SAFE FIRST STEPS — KALI/UBUNTU
 ===============================
 1. Extract the ZIP into a new directory (do not run any contained binaries).
 2. Read docs/STUDENT_INCIDENT_BRIEF.md and questions/HTB_PLAYER_TASKS.md.
-   The 30-question INVESTIGATION.md is a deeper, narrative research extension.
+   The 30-question INVESTIGATION.md is a deeper, narrative research extension. Four extra synthetic JSONL streams model identity, change rejection, edge firewall and systemd enablement; cross-correlate them with core records before answering the final eight tasks.
 3. From the extracted package root, verify the artifact inventory:
        cd artifacts
        sha256sum -c custody_manifest.sha256
@@ -61,7 +61,7 @@ SAFE FIRST STEPS — KALI/UBUNTU
    If those tools are unavailable, Wireshark's File > Open also works.
 7. Compare the policy specimens using local SHA-256 utilities:
        sha256sum artifacts/policy_baseline.bin artifacts/policy_observed.bin
-8. Continue through the 17 HTB tasks in order. For each answer, cite the source filename,
+8. Continue through the 25 HTB tasks in order. For each answer, cite the source filename,
    specific record/row/offset and original UTC timestamp if present.
 
 SAFETY AND PROVENANCE
@@ -81,7 +81,7 @@ that would resolve the issue.
 WHAT TO DELIVER
 ===============
 - SHA-256/inventory verification notes
-- Exact-value answers to the 17 HTB tasks (on the platform, if supplied)
+- Exact-value answers to the 25 HTB tasks (on the platform, if supplied)
 - Artifact-cited responses to the optional 30-question research extension
 - Multihost event timeline, including uncertainty
 - Observed/inferred/unknown claim matrix and competing hypotheses
