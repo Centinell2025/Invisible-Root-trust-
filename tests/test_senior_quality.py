@@ -143,7 +143,7 @@ class ScientificInvestigationTests(unittest.TestCase):
         subprocess.run([sys.executable, str(ROOT / "tools" / "build_submission.py")], check=True)
         with zipfile.ZipFile(archive) as z:
             self.assertIn("PROPOSED HTB DIFFICULTY: HARD", z.read("README.txt").decode("utf-8"))
-            self.assertIn("Difficulty proposed for HTB:** Hard",
+            self.assertIn("**Proposed HTB difficulty:** Hard",
                           z.read("questions/HTB_PLAYER_TASKS.md").decode("utf-8"))
             self.assertIn("Requested HTB difficulty:** Hard",
                           z.read("docs/STUDENT_INCIDENT_BRIEF.md").decode("utf-8"))
