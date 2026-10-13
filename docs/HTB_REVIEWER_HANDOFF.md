@@ -69,16 +69,16 @@ CI also checks syntax, rebuilds evidence after mutation tests, hashes every arti
 | Criterion | Minimum proof expected | Current status |
 |---|---|---|
 | User can start without the repository | README, included tasks, evidence, safe free-tool examples | Built into student ZIP |
-| Answers reproducible from artifact bytes | Reproduce all 25 exact tasks against the current ZIP | **Previous 17 validated; 8 new Hard pivots require updated private reviewer verification and blind test** |
-| Grading compatible with official HTB question YAML | Exact `flag` values, formatting and acceptable variants | **Previous 17-flag YAML exists privately; new 25-flag reviewer YAML must be verified before submission** |
-| Full intended walkthrough | Step-by-step answer path following HTB Sherlock writeup template | **Present in reviewer-only ZIP; independent assessment pending** |
-| Screenshot proof of each answer | Terminal evidence and exact commands covering the current questions | **Previous 17 screenshots exist; 8 new Hard pivots require current reviewer demonstrations** |
+| Answers reproducible from artifact bytes | Reproduce all 25 exact tasks against the current ZIP | **25/25 reproduced from the current student ZIP in a confidential reviewer package; independent blind test pending** |
+| Grading compatible with official HTB question YAML | Exact `flag` values, formatting and acceptable variants | **Current 25-flag YAML assembled and author-verified, held outside public repository; HTB approval pending** |
+| Full intended walkthrough | Step-by-step proof path for 25 tasks aligned to HTB Sherlock template | **Current 25-question private writeup complete; independent assessment pending** |
+| Screenshot proof of each answer | Terminal evidence and exact commands covering the current questions | **25 actual Xterm screenshots and read-only replay commands in confidential examiner package; independent verification pending** |
 | Scenario, host/process/service/account/CVE/PII description | Clear scope and technical details | This handoff + architecture diagram |
-| Evidence integrity | SHA-256 inventory, reproducible build and CI | **Earlier 85-test baseline; new Hard extension must pass fresh CI with 39 evidence files** |
+| Evidence integrity | SHA-256 inventory, reproducible build and CI | **97 automated tests passed in CI; 39 synthetic evidence files hash-verified** |
 | Realism and playability | Two blind attempts and ambiguity reconciliation | **Not independently validated** |
 | Hard difficulty | Advanced multi-source investigation and observed time-to-solve (HTB suggests up to 2 days) | **Not independently established** |
 
-The 30-question research worksheet is intentionally harder to grade automatically; HTB's platform should receive the 25 discrete task fields and a **separately confidential** human-reviewed incident conclusion. Editors may choose to revise the number and difficulty after cold-solve results.
+The 30-question research worksheet remains instructor-assessed and is intentionally not machine-graded; HTB's platform should receive the 25 discrete task fields and a **separately confidential** human-reviewed incident conclusion. Editors may choose to revise the number and difficulty after cold-solve results.
 
 ## 7. Reviewer feedback requested
 
