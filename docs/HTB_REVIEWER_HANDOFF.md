@@ -12,9 +12,9 @@ The verified **student-only ZIP** is published after successful GitHub Actions v
 - `README.txt` — mandatory safety notice, free-tool instructions, evidence-validation commands and Beacon authorship.
 - `docs/STUDENT_INCIDENT_BRIEF.md` — spoiler-free fictional incident and tasking.
 - `docs/STUDENT_EVIDENCE_RULES.md` — measurement, attribution, uncertainty and chain-of-custody standards.
-- `questions/HTB_PLAYER_TASKS.md` — **17 exact-value, progressively staged** player tasks with unambiguous output formats.
+- `questions/HTB_PLAYER_TASKS.md` — **25 exact-value, progressively staged** player tasks with unambiguous output formats.
 - `questions/INVESTIGATION.md` — **30 analytical research questions**, a separate instructor-assessed extension rather than 30 automatically scored flags.
-- `artifacts/` — all 35 evidence files plus `custody_manifest.sha256`, including SQLite, packet captures, hash-linked specimen bytes, Linux-style logs and a scoped TAR.
+- `artifacts/` — all 39 evidence files plus `custody_manifest.sha256`, including SQLite, packet captures, hash-linked specimen bytes, Linux-style logs and a scoped TAR.
 
 The *public development repository* contains generator logic and discussions. **Do not use the repository or its commit history for a blind playtest.** Provide the reviewed ZIP exclusively.
 
@@ -69,16 +69,16 @@ CI also checks syntax, rebuilds evidence after mutation tests, hashes every arti
 | Criterion | Minimum proof expected | Current status |
 |---|---|---|
 | User can start without the repository | README, included tasks, evidence, safe free-tool examples | Built into student ZIP |
-| Answers reproducible from artifact bytes | Reproduce all 17 exact tasks using the attached reviewer commands | **17/17 author-verified in confidential ZIP; independent blind test pending** |
-| Grading compatible with official HTB question YAML | Exact `flag` values, formatting and acceptable variants | **Confidential 17-flag YAML prepared, not included in public/student ZIP; HTB review pending** |
+| Answers reproducible from artifact bytes | Reproduce all 25 exact tasks against the current ZIP | **Previous 17 validated; 8 new Hard pivots require updated private reviewer verification and blind test** |
+| Grading compatible with official HTB question YAML | Exact `flag` values, formatting and acceptable variants | **Previous 17-flag YAML exists privately; new 25-flag reviewer YAML must be verified before submission** |
 | Full intended walkthrough | Step-by-step answer path following HTB Sherlock writeup template | **Present in reviewer-only ZIP; independent assessment pending** |
-| Screenshot proof of each answer | Actual terminal screenshots illustrating evidence | **17 terminal screenshots included in confidential reviewer ZIP; independent verification pending** |
+| Screenshot proof of each answer | Terminal evidence and exact commands covering the current questions | **Previous 17 screenshots exist; 8 new Hard pivots require current reviewer demonstrations** |
 | Scenario, host/process/service/account/CVE/PII description | Clear scope and technical details | This handoff + architecture diagram |
-| Evidence integrity | SHA-256 inventory, reproducible build and CI | **85 automated tests passed; 35 evidence files validated** |
+| Evidence integrity | SHA-256 inventory, reproducible build and CI | **Earlier 85-test baseline; new Hard extension must pass fresh CI with 39 evidence files** |
 | Realism and playability | Two blind attempts and ambiguity reconciliation | **Not independently validated** |
 | Hard difficulty | Advanced multi-source investigation and observed time-to-solve (HTB suggests up to 2 days) | **Not independently established** |
 
-The 30-question research worksheet is intentionally harder to grade automatically; HTB's platform should receive the 17 discrete task fields and a **separately confidential** human-reviewed incident conclusion. Editors may choose to revise the number and difficulty after cold-solve results.
+The 30-question research worksheet is intentionally harder to grade automatically; HTB's platform should receive the 25 discrete task fields and a **separately confidential** human-reviewed incident conclusion. Editors may choose to revise the number and difficulty after cold-solve results.
 
 ## 7. Reviewer feedback requested
 
