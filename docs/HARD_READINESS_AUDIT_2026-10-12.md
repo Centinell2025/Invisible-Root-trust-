@@ -10,7 +10,7 @@
 
 | Measured gate | Observed |
 |---|---:|
-| Python unittest suite | **85 tests passed** |
+| Python unittest suite | **85 tests passed in the earlier baseline; updated Hard-suite tests pending** |
 | Scientific question–source mappings | **30/30** |
 | Verified generated evidence files (excluding SHA manifest) | **35** |
 | Linux auth/syslog lines | **83** |
@@ -59,7 +59,7 @@ The student ZIP is built by `tools/build_submission.py` and rechecked by `tools/
 
 ## Practical Hard classification rationale
 
-The scenario requires Linux DFIR, multihost identity correlation, exact UTC/source-clock reconciliation, forensic data-integrity checks, SQL filtering, systemd persistence analysis and partial network packet interpretation. The existing **17 exact-value questions** offer a credible sequence but include straightforward artifact lookups, so Hard is a **requested category**, not a measured result. Preserve the 30-question extended investigation for deeper professional learning; do not imply those open-ended prompts are automatically graded on HTB.
+The scenario requires Linux DFIR, multihost identity correlation, exact UTC/source-clock reconciliation, forensic data-integrity checks, SQL filtering, systemd persistence analysis and partial network packet interpretation. The expanded **25 exact-value questions** add eight multi-source Hard investigation gates; the original 17 offer a graded baseline but include straightforward artifact lookups, so Hard is a **requested category**, not a measured result. Preserve the 30-question extended investigation for deeper professional learning; do not imply those open-ended prompts are automatically graded on HTB.
 
 ## Required independent acceptance experiment
 
