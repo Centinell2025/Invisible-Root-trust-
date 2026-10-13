@@ -1,0 +1,67 @@
+name: Publish HTB Password-Protected Student ZIP
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-htb-student.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release-student:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Regenerate and scientifically verify student evidence
+        run: |
+          python3 tools/run_full_case.py
+          python3 tools/scientific_quality_gate.py
+          python3 tools/validate_htb_tasks.py
+          python3 -m unittest discover -s tests -v
+          python3 tools/run_full_case.py
+          python3 tools/build_submission.py
+          python3 tools/validate_release.py
+      - name: Produce HTB password-protected ZIP from validated student-only archive
+        shell: bash
+        run: |
+          mkdir -p dist/htb-student
+          unzip -q dist/Invisible-Root-of-Trust-student.zip -d dist/htb-student
+          cd dist/htb-student
+          zip -q -X -r -P hackthebox ../Invisible-Root-of-Trust-HTB-STUDENT.zip .
+          cd ../..
+          python3 - <<'PY'
+          from pathlib import Path
+          import zipfile,hashlib
+          source=Path('dist/Invisible-Root-of-Trust-student.zip')
+          protected=Path('dist/Invisible-Root-of-Trust-HTB-STUDENT.zip')
+          with zipfile.ZipFile(source) as a, zipfile.ZipFile(protected) as b:
+              original={n:a.read(n) for n in a.namelist() if not n.endswith('/')}
+              actual={n:b.read(n,pwd=b'hackthebox') for n in b.namelist() if not n.endswith('/')}
+              assert set(original)==set(actual), f'Differing members: {set(original)^set(actual)}'
+              assert all(hashlib.sha256(original[n]).digest()==hashlib.sha256(actual[n]).digest() for n in original)
+              assert all((i.flag_bits&1)!=0 for i in b.infolist() if not i.is_dir())
+              assert 'questions/HTB_PLAYER_TASKS.md' in actual
+              assert 'README.txt' in actual
+              forbidden=('instructor','answer_key','walkthrough','solution','grading_secret')
+              assert not any(any(k in n.lower() for k in forbidden) for n in actual)
+              assert len(original)>30
+          print('PASS: encrypted HTB student ZIP, same verified evidence and no solutions')
+          PY
+      - name: Publish direct-download HTB Sherlock ZIP
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG=invisible-root-trust-htb-student-v1
+          FILE=dist/Invisible-Root-of-Trust-HTB-STUDENT.zip
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$FILE" --clobber
+          else
+            gh release create "$TAG" "$FILE" \
+              --title "Invisible Root of Trust — HTB student archive" \
+              --notes "Synthetic Linux DFIR Sherlock candidate; Beacon of the Eagle LLC / Centinell Suite Defense. Password: hackthebox. Only student evidence and prompts; no instructor answers. Proposed difficulty Hard; not HTB approved." \
+              --latest=false
+          fi
+          gh release view "$TAG" --json url,assets
