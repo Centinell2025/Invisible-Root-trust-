@@ -50,6 +50,13 @@ def validate_records(streams):
         keys=[(utc(r["utc"]),r["event_id"]) for r in rows]
         require(keys==sorted(keys),"Disordered Hard source stream "+name)
 
+    acquisition=csvrows("acquisition_register.csv")
+    for filename in FILES:
+        scoped=[r for r in acquisition if r["artifact"]==filename]
+        require(len(scoped)==1 and scoped[0]["verified_origin"]=="no"
+                and scoped[0]["completeness"]=="selected-training-window",
+                "Missing/untrue acquisition register for "+filename)
+
     identity=streams[FILES[0]]
     sess=csvrows("session_lineage.csv")
     auth=csvrows("auth_events.csv")
