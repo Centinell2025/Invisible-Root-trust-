@@ -149,4 +149,28 @@ unit.extend([
          reboot_verified="no"),
 ])
 save("systemd_lifecycle.jsonl",unit)
+# Document collection provenance for every additional source. These
+# registers are exercise metadata, not original chain-of-custody proof.
+import csv
+register=ART/"acquisition_register.csv"
+with register.open("r",encoding="utf-8",newline="") as f:
+    current=list(csv.DictReader(f))
+    headers=list(current[0].keys())
+existing={r["artifact"] for r in current}
+for i,(name,host,method) in enumerate([
+    ("idp_session_audit.jsonl","nrg-idp-01","simulated-identity-export"),
+    ("change_approval_audit.jsonl","nrg-build-03","simulated-approval-ledger"),
+    ("firewall_edge_decisions.jsonl","nrg-sensor-04","simulated-firewall-decision-export"),
+    ("systemd_lifecycle.jsonl","nrg-gw-07","simulated-local-service-events"),
+],start=6):
+    if name not in existing:
+        current.append(dict(utc=f"2026-09-17T03:27:{i:02d}Z",
+            source_id=f"COL-{i:02d}",artifact=name,source_host=host,
+            method=method,completeness="selected-training-window",
+            verified_origin="no"))
+with register.open("w",encoding="utf-8",newline="") as f:
+    writer=csv.DictWriter(f,fieldnames=headers)
+    writer.writeheader()
+    writer.writerows(current)
+
 print("Generated 4 Hard investigative streams with 56/68/88/64 background events and exact cross-source pivots")
