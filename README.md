@@ -21,7 +21,7 @@ Evidence appears in `artifacts/`, and the student-only archive appears in `dist/
 The generated package now includes a five-host SQLite correlation cache (`endpoint_telemetry.sqlite3`, over 1,200 synthetic host events and 370 synthetic flow records) and a scoped Linux TAR triage (`offline_gateway_triage.tar`) with unit files, a service enablement symlink, and selected logs. **The TAR is not a sector disk image, the SQLite database is derived rather than an independent witness, and no real company is a victim.** See [architecture and provenance](docs/ARCHITECTURE_AND_PROVENANCE.md) and [the Hard readiness audit](docs/HARD_READINESS_AUDIT_2026-10-12.md).
 
 ## Hard difficulty extensions
-The student release includes four additional synthetic event streams for advanced identity, denied change, firewall and systemd lifecycle correlation. They have meaningful background noise and consistent source limitations, not verified production provenance. **Tasks 18–25 require multi-source pivots**; the first 17 establish forensic fundamentals.
+The student release includes four additional synthetic event streams (`idp_session_audit.jsonl`, `change_approval_audit.jsonl`, `firewall_edge_decisions.jsonl`, `systemd_lifecycle.jsonl`) for advanced identity, denied change, firewall and systemd lifecycle correlation. They have meaningful background noise and consistent source limitations, not verified production provenance. **Tasks 18–25 require multi-source pivots**; the first 17 establish forensic fundamentals.
 
 ## Student materials (reviewed ZIP allowlist)
 - [Student incident briefing](docs/STUDENT_INCIDENT_BRIEF.md)
