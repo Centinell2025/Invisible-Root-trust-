@@ -8,7 +8,7 @@
 - [x] CI workflow definition (verified successful; artifact published from successful push run)
 - [ ] Trusted firmware/TPM, memory or full disk acquisitions (current files are realistic **simulations**; TCP partial capture and TAR file triage are validated)
 - [x] Limited benign background noise, SQLite event cache and time-offset reconciliation logic (error bounds still unavailable)
-- [x] 17 exact-answer HTB tasks verified against a confidential solution package (30 additional questions are research extension)
+- [x] 25 exact-answer HTB tasks, eight requiring multi-source correlation; prior 17 reviewed privately, new answer key must be re-verified (30 additional questions are research extension)
 - [x] Confidential instructor walkthrough, answer YAML, demonstrations and evidence-to-answer mapping prepared outside public repository
 - [ ] Independent cold-solve playtest with difficulty measurement
 - [ ] Confirm current HTB submission requirements, licensing and approval
