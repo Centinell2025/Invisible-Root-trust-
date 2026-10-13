@@ -23,6 +23,7 @@ def verify():
     subprocess.run([sys.executable, str(ROOT / "tools" / "validate_case.py")], check=True)
     subprocess.run([sys.executable, str(ROOT / "tools" / "validate_realistic.py")], check=True)
     subprocess.run([sys.executable, str(ROOT / "tools" / "validate_snapshot.py")], check=True)
+    subprocess.run([sys.executable, str(ROOT / "tools" / "validate_hard_pivots.py")], check=True)
     subprocess.run([sys.executable, str(ROOT / "tools" / "scientific_quality_gate.py")], check=True)
     subprocess.run([sys.executable, str(ROOT / "tools" / "validate_htb_tasks.py")], check=True)
     if not ZIP.is_file():
