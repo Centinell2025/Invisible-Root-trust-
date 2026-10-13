@@ -6,13 +6,13 @@
 
 ## Verified CI results
 
-[Latest verified 85-test Hard build and student archive](https://github.com/Centinell2025/Invisible-Root-trust-/actions/runs/38320404202).
+[Latest successful 97-test Hard build and student archive](https://github.com/Centinell2025/Invisible-Root-trust-/actions/runs/38325750148).
 
 | Measured gate | Observed |
 |---|---:|
-| Python unittest suite | **85 tests passed in the earlier baseline; updated Hard-suite tests pending** |
+| Python unittest suite | **97 tests passed in current Hard CI** |
 | Scientific question–source mappings | **30/30** |
-| Verified generated evidence files (excluding SHA manifest) | **35** |
+| Verified generated evidence files (excluding SHA manifest) | **39** |
 | Linux auth/syslog lines | **83** |
 | auditd-like lines | **41** |
 | Extended journal records | **68** |
@@ -54,7 +54,7 @@ The student ZIP is built by `tools/build_submission.py` and rechecked by `tools/
 2. **No verified full-memory or sector-level offline-disk acquisition.** There is a realistic *scoped TAR* and SQLite cache, not a complete disk/RAM image. The unit file and enablement symlink can be inspected, but all-disk persistence and execution after a verified reboot are not proved.
 3. **Partial network coverage.** The packet capture corroborates limited TCP connectivity; it does not establish the full reported flow, any remote command, malicious intent, or data theft.
 4. **Assessment answerability not proved.** The 30 source-mapping contracts establish possible inputs; they do not grade 30 complete answers. All final reasoning prompts still need human review.
-5. **Confidential solutions assembled; independent cold solve pending.** The reviewer-only ZIP contains an answer YAML, intended write-up and terminal screenshots. That is not a substitute for an independent non-author playtest. Public development code exposes generator logic: send testers only the student ZIP.
+5. **Current confidential 25-answer solutions and screenshots assembled; independent cold solve pending.** The reviewer-only ZIP contains an answer YAML, intended write-up and terminal screenshots. That is not a substitute for an independent non-author playtest. Public development code exposes generator logic: send testers only the student ZIP.
 6. **Hard difficulty has not been externally measured.** HTB describes a Hard Sherlock as an advanced, multi-stage investigation taking up to about two days depending on analyst experience. A passing CI run is not independent evidence of that difficulty or HTB approval.
 
 ## Practical Hard classification rationale
